@@ -31,6 +31,7 @@ $(document).ready(function () {
     function clearInputFields() {
         // debugger;
         $("#title-input").val("");
+        $("#body-input").val("");
     }
 
 
