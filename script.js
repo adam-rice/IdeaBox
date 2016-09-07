@@ -18,13 +18,19 @@ $(document).ready(function () {
       var newTitle = parsed.title;
       var newBody = parsed.body;
       createIdeaContainer(newTitle, newBody);
+      clearInputFields();
     }
 
-    var qualityRating = "text";
+    var qualityRating = "text"; //dummy; needs to change
 
     function createIdeaContainer(newTitle, newBody) {
         var newSection = "<section id='each-idea-container'><h3>"+newTitle+"</h3><p>"+newBody+"</p><img id='upvote' src=''><img id='downvote' src=''><h6>Quality: "+qualityRating+"</h6></section>";
         $("#user-ideas").prepend(newSection);
+    }
+
+    function clearInputFields() {
+        // debugger;
+        $("#title-input").val("");
     }
 
 
