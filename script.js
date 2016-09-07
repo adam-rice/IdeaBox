@@ -1,7 +1,8 @@
 $(document).ready(function () {
 
     $("#save-button").click(function () {
-      transferIdeaToBottom();
+        createIdeaContainer();
+        transferIdeaToBottom();
     });
 
 
@@ -12,7 +13,7 @@ $(document).ready(function () {
     }
 
     function createIdeaContainer() {
-        var newSection = ;
+        var newSection = "<section>dogs</section>";
         $("#user-ideas").prepend(newSection);
     }
 
