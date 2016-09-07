@@ -4,6 +4,13 @@ $(document).ready(function () {
         transferIdeaToBottom();
     });
 
+    $("#title-input, #body-input").on("keyup keydown", function(key) {
+      if (key.which === 13) { // the enter key
+        transferIdeaToBottom();
+      }
+  });
+
+
 
     function transferIdeaToBottom() {
       var $titleInput = $("#title-input").val();
@@ -29,7 +36,6 @@ $(document).ready(function () {
     }
 
     function clearInputFields() {
-        // debugger;
         $("#title-input").val("");
         $("#body-input").val("");
     }
