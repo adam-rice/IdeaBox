@@ -15,7 +15,6 @@ $(document).ready(function () {
       localStorage.setItem('userInput', stringifiedObj);
       var gottenItem = localStorage.getItem('userInput');
       var parsed = JSON.parse(gottenItem);
-    //   console.log(parsed);
       var newTitle = parsed.title;
       var newBody = parsed.body;
       console.log(newBody);
