@@ -12,7 +12,7 @@ $(document).ready(function () {
       inputObject.title = $titleInput;
       inputObject.body = $bodyInput;
       var stringifiedObj = JSON.stringify(inputObject);
-      console.log(stringifiedObj);
+      localStorage.setItem('userInput', stringifiedObj);
       createIdeaContainer($titleInput, $bodyInput); // needs to be corrected with storedInput variables
     }
 
