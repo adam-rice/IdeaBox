@@ -13,11 +13,17 @@ $(document).ready(function () {
       inputObject.body = $bodyInput;
       var stringifiedObj = JSON.stringify(inputObject);
       localStorage.setItem('userInput', stringifiedObj);
-      createIdeaContainer($titleInput, $bodyInput); // needs to be corrected with storedInput variables
+      var gottenItem = localStorage.getItem('userInput');
+      var parsed = JSON.parse(gottenItem);
+    //   console.log(parsed);
+      var newTitle = parsed.title;
+      var newBody = parsed.body;
+      console.log(newBody);
+      createIdeaContainer(newTitle, newBody); // needs to be corrected with storedInput variables
     }
 
-    function createIdeaContainer($titleInput, $bodyInput) {
-        var newSection = "<section><h3>"+$titleInput+"</h3><p>"+$bodyInput+"</p><img src=''><img src=''><h6>Quality</h6></section>";
+    function createIdeaContainer(newTitle, newBody) {
+        var newSection = "<section><h3>"+newTitle+"</h3><p>"+newBody+"</p><img src=''><img src=''><h6>Quality</h6></section>";
         $("#user-ideas").prepend(newSection);
     }
 
