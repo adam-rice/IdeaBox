@@ -9,8 +9,8 @@ $(document).ready(function () {
       var $titleInput = $("#title-input").val();
       var $bodyInput = $("#body-input").val();
       var inputObject = {};
-      inputObject.title = "Dogs";
-      inputObject.body = "cats";
+      inputObject.title = $titleInput;
+      inputObject.body = $bodyInput;
       console.log(inputObject);
       createIdeaContainer($titleInput, $bodyInput); // needs to be corrected with storedInput variables
     }
