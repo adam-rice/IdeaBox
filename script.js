@@ -17,9 +17,10 @@ $(document).ready(function () {
       var parsed = JSON.parse(gottenItem);
       var newTitle = parsed.title;
       var newBody = parsed.body;
-      console.log(newBody);
-      createIdeaContainer(newTitle, newBody); // needs to be corrected with storedInput variables
+      createIdeaContainer(newTitle, newBody);
     }
+
+    var qualityRating = "text";
 
     function createIdeaContainer(newTitle, newBody) {
         var newSection = "<section id='each-idea-container'><h3>"+newTitle+"</h3><p>"+newBody+"</p><img id='upvote' src=''><img id='downvote' src=''><h6>Quality: "+qualityRating+"</h6></section>";
