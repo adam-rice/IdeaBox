@@ -12,12 +12,17 @@ $(document).ready(function () {
       inputObject.title = $titleInput;
       inputObject.body = $bodyInput;
       var stringifiedObj = JSON.stringify(inputObject);
-      console.log(stringifiedObj);
-      createIdeaContainer($titleInput, $bodyInput); // needs to be corrected with storedInput variables
+      localStorage.setItem('userInput', stringifiedObj);
+      var gottenItem = localStorage.getItem('userInput');
+      var parsed = JSON.parse(gottenItem);
+      var newTitle = parsed.title;
+      var newBody = parsed.body;
+      console.log(newBody);
+      createIdeaContainer(newTitle, newBody); // needs to be corrected with storedInput variables
     }
 
-    function createIdeaContainer($titleInput, $bodyInput) {
-        var newSection = "<section><h3>"+$titleInput+"</h3><p>"+$bodyInput+"</p><img src=''><img src=''><h6>Quality</h6></section>";
+    function createIdeaContainer(newTitle, newBody) {
+        var newSection = "<section id='each-idea-container'><h3>"+newTitle+"</h3><p>"+newBody+"</p><img id='upvote' src=''><img id='downvote' src=''><h6>Quality: "+qualityRating+"</h6></section>";
         $("#user-ideas").prepend(newSection);
     }
 
