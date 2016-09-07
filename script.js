@@ -19,12 +19,14 @@ $(document).ready(function () {
       var inputObject = {};
       inputObject.title = $titleInput;
       inputObject.body = $bodyInput;
+      inputObject.id = Date.now();
       var stringifiedObj = JSON.stringify(inputObject);
       localStorage.setItem('userInput', stringifiedObj);
       var gottenItem = localStorage.getItem('userInput');
       var parsed = JSON.parse(gottenItem);
       var newTitle = parsed.title;
       var newBody = parsed.body;
+      var newId = parsed.id;
       createIdeaContainer(newTitle, newBody);
       clearInputFields();
     }
