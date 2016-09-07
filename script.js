@@ -1,23 +1,25 @@
 $(document).ready(function () {
-
+  // renderIdea();
     $("#save-button").click(function () {
         transferIdeaToBottom();
     });
 
+    var ideas = [];
 
     function transferIdeaToBottom() {
       var $titleInput = $("#title-input").val();
       var $bodyInput = $("#body-input").val();
-      var inputObject = {};
-      inputObject.title = $titleInput;
-      inputObject.body = $bodyInput;
+      var inputObject = { title: $titleInput, body: $bodyInput};
+      // inputObject.title = $titleInput;
+      // inputObject.body = $bodyInput;
       var stringifiedObj = JSON.stringify(inputObject);
-      localStorage.setItem('userInput', stringifiedObj);
-      var gottenItem = localStorage.getItem('userInput');
-      var parsed = JSON.parse(gottenItem);
-      var newTitle = parsed.title;
-      var newBody = parsed.body;
-      createIdeaContainer(newTitle, newBody);
+      ideas.push(stringifiedObj)
+      localStorage.setItem('userInput', ideas);
+      // var gottenItem = localStorage.getItem('userInput');
+      // var parsed = JSON.parse(gottenItem);
+      // var newTitle = parsed.title;
+      // var newBody = parsed.body;
+      createIdeaContainer($titleInput, $bodyInput);
     }
 
     var qualityRating = "text";
