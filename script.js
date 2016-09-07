@@ -11,7 +11,8 @@ $(document).ready(function () {
       var inputObject = {};
       inputObject.title = $titleInput;
       inputObject.body = $bodyInput;
-      console.log(inputObject);
+      var stringifiedObj = JSON.stringify(inputObject);
+      console.log(stringifiedObj);
       createIdeaContainer($titleInput, $bodyInput); // needs to be corrected with storedInput variables
     }
 
