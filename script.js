@@ -23,7 +23,7 @@ $(document).ready(function () {
     }
 
     function createIdeaContainer(newTitle, newBody) {
-        var newSection = "<section><h3>"+newTitle+"</h3><p>"+newBody+"</p><img src=''><img src=''><h6>Quality</h6></section>";
+        var newSection = "<section id='each-idea-container'><h3>"+newTitle+"</h3><p>"+newBody+"</p><img id='upvote' src=''><img id='downvote' src=''><h6>Quality: "+qualityRating+"</h6></section>";
         $("#user-ideas").prepend(newSection);
     }
 
