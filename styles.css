@@ -24,23 +24,30 @@ h1 {
   color: #6D6E71;
 }
 input {
+  font-size: 120%;
   height: 30px;
-  width: 250px;
+  width: 450px;
   margin: 15px;
-
+  outline: none;
 }
-#title-input {
-
-
+button {
+  background-color: #00A79D;
+  border-style: none;
+  color: #FFFFFF;
+  font-size: 120%;
+  height: 30px;
+  width: 450px;
+  margin: 15px;
+  outline: none;
 }
-#body-input {
-
-}
-#save-button {
-
+button:hover {
+  background-color: #045E55;
+  cursor: pointer;
 }
 #output-container {
   font-family: 'Open Sans', sans-serif;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
 }
