@@ -1,7 +1,9 @@
 $(document).ready(function () {
 
     $("#save-button").click(function () {
-        transferIdeaToBottom();
+      var $titleInput = $("#title-input").val();
+      var $bodyInput = $("#body-input").val();
+      transferIdeaToBottom($titleInput, $bodyInput);
     });
 
     $("#title-input, #body-input").on("keyup keydown", function(key) {
@@ -10,11 +12,7 @@ $(document).ready(function () {
       }
   });
 
-
-
-    function transferIdeaToBottom() {
-      var $titleInput = $("#title-input").val();
-      var $bodyInput = $("#body-input").val();
+    function transferIdeaToBottom($titleInput, $bodyInput) {
       var inputObject = {};
       inputObject.title = $titleInput;
       inputObject.body = $bodyInput;
