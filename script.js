@@ -20,6 +20,7 @@ $(document).ready(function () {
       inputObject.title = $titleInput;
       inputObject.body = $bodyInput;
       inputObject.id = Date.now();
+      inputObject.quality = "swill";
       var stringifiedObj = JSON.stringify(inputObject);
       localStorage.setItem('userInput', stringifiedObj);
       var gottenItem = localStorage.getItem('userInput');
@@ -27,14 +28,13 @@ $(document).ready(function () {
       var newTitle = parsed.title;
       var newBody = parsed.body;
       var newId = parsed.id;
-      createIdeaContainer(newTitle, newBody);
+      var newQuality = parsed.quality;
+      createIdeaContainer(newTitle, newBody, newQuality);
       clearInputFields();
     }
 
-    var qualityRating = "text"; //dummy; needs to change
-
-    function createIdeaContainer(newTitle, newBody) {
-        var newSection = "<section id='each-idea-container'><h3>"+newTitle+"</h3><p>"+newBody+"</p><img id='upvote' src=''><img id='downvote' src=''><h6>Quality: "+qualityRating+"</h6></section>";
+    function createIdeaContainer(newTitle, newBody, newQuality) {
+        var newSection = "<section id='each-idea-container'><h3>"+newTitle+"</h3><p>"+newBody+"</p><img id='upvote' src=''><img id='downvote' src=''><h6>Quality: "+newQuality+"</h6></section>";
         $("#user-ideas").prepend(newSection);
     }
 
