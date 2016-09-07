@@ -13,7 +13,7 @@ $(document).ready(function () {
     }
 
     function createIdeaContainer() {
-        var newSection = "<section>dogs</section>";
+        var newSection = "<section><h3>My Brilliant Idea Title</h3><p>My Brilliant Details</p><img src=''><img src=''><h6>Quality</h6></section>";
         $("#user-ideas").prepend(newSection);
     }
 
