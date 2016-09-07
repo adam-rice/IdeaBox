@@ -6,11 +6,14 @@ $(document).ready(function () {
       transferIdeaToBottom($titleInput, $bodyInput);
     });
 
-    $("#title-input, #body-input").on("keyup keydown", function(key) {
-      if (key.which === 13) { // the enter key
-        transferIdeaToBottom();
-      }
-  });
+  //   $("#title-input, #body-input").on("keyup keydown", function(key) {
+  //     debugger;
+  //     var $titleInput = $("#title-input").val();
+  //     var $bodyInput = $("#body-input").val();
+  //     if (key.which === 13) { // the enter key
+  //       transferIdeaToBottom($titleInput, $bodyInput);
+  //     }
+  // });
 
     function transferIdeaToBottom($titleInput, $bodyInput) {
       var inputObject = {};
