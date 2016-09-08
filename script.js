@@ -44,14 +44,16 @@ $(document).ready(function () {
     }
 
     $("#user-ideas").on("click", "#delete", function() {
-      $(this).parent().remove();
+      // $(this).parent().remove();
       removeIdeaFromArray();
       });
 
     function removeIdeaFromArray() {
       var gottenArray = localStorage.getItem('array');
       var parsedArray = JSON.parse(gottenArray);
-      
+      // console.log(parsedArray[1]);
+      parsedArray.splice(1, 1);
+      console.log(parsedArray[1]);
     }
 
     function clearInputFields() {
