@@ -59,7 +59,7 @@ $(document).ready(function () {
         var newBody = parsedArray[i].body;
         var newId = parsedArray[i].id;
         var newQuality = parsedArray[i].quality;
-        
+        createIdeaContainer(newTitle, newBody, newQuality);
       }
 
 
