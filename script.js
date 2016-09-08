@@ -9,12 +9,12 @@ $(document).ready(function () {
       fillPageArray($titleInput, $bodyInput);
     });
 
-    function fillPageArray($titleInput, $bodyInput) {
-      var inputObject = {};
-      inputObject.title = $titleInput;
-      inputObject.body = $bodyInput;
-      inputObject.id = Date.now();
-      inputObject.quality = "swill";
+    function fillPageArray(title, body, id, quality) {
+      inputObject = {};
+      this.title = title;
+      this.body = body;
+      this.id = Date.now();
+      this.quality = 'swill';
       pageArr.push(inputObject);
       console.log(pageArr[0]);
     }
@@ -49,13 +49,28 @@ $(document).ready(function () {
     // }
 
     function createIdeaContainer(newTitle, newBody, newQuality) {
-        var newSection = "<section id='each-idea-container'> <header><h3>"+newTitle+"</h3><figure id='delete'></figure></header> <p>"+newBody+"</p> <footer><figure id='upvote'></figure><figure id='downvote'></figure><h6><span id='designation-quality'>quality</span>: "+newQuality+"</h6></footer> <hr> </section>";
-        $("#user-ideas").prepend(newSection);
+
+        $("#user-ideas").prepend(`
+            <section class='each-idea-container' id=${this.id}>
+                <header>
+                    <h3>${this.title}</h3>
+                    <figure class='delete'></figure>
+                </header>
+                    <p>${this.body}</p>
+                <footer>
+                    <figure class='upvote'></figure>
+                    <figure class='downvote'></figure>
+                    <h6><span class='designation-quality'>quality</span>:${this.quality}</h6>
+                </footer><hr>
+            </section>
+        `);
     }
 
     $("#user-ideas").on("click", "#delete", function() {
-      // $(this).parent().parent().remove();
-      console.log(this.closest("#each-idea-container"));
+    //   $(this).parent().parent().remove();
+        var targetToGetRidOf = $(this).closest("#user-ideas");
+        console.log(targetToGetRidOf);
+
       removeIdeaFromArray();
       });
 
