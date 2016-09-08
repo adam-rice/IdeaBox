@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+
+
     $("#save-button").click(function () {
       var $titleInput = $("#title-input").val();
       var $bodyInput = $("#body-input").val();
@@ -42,6 +44,18 @@ $(document).ready(function () {
         $("#title-input").val("");
         $("#body-input").val("");
     }
+
+    $(window).on("load", function() {
+        // alert('hi');
+    //     debugger;
+      var gottenItem = localStorage.getItem('userInput');
+      var parsed = JSON.parse(gottenItem);
+      var newTitle = parsed.title;
+      var newBody = parsed.body;
+      var newId = parsed.id;
+      var newQuality = parsed.quality;
+      createIdeaContainer(newTitle, newBody, newQuality);
+    });
 
 
 }); //end of jQuery body
