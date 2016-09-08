@@ -72,19 +72,30 @@ h6 {
 hr {
   color: #D1D3D4;
 }
-img {
+figure {
   height: 20px;
   width: 20px;
+  padding: 2px;
+  transition-duration: .4s;
+}
+figure:hover {
+  cursor: pointer;
+}
+#upvote {
+  background-image: url('images/upvote.svg');
 }
 #upvote:hover {
-  cursor: pointer;
-
+  background-image: url('images/upvote-hover.svg');
 }
 #downvote {
-  cursor: pointer;
-
+  background-image: url('images/downvote.svg');
+}
+#downvote:hover {
+  background-image: url('images/downvote-hover.svg');
 }
 #delete {
-  cursor: pointer;
-  
+  background-image: url('images/delete.svg');
+}
+#delete:hover {
+  background-image: url('images/delete-hover.svg');
 }
