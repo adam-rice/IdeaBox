@@ -3,7 +3,8 @@ $(document).ready(function () {
     $("#save-button").click(function () {
       var $titleInput = $("#title-input").val();
       var $bodyInput = $("#body-input").val();
-      transferIdeaToBottom($titleInput, $bodyInput);
+      // transferIdeaToBottom($titleInput, $bodyInput);
+      fillLocalArray($titleInput, $bodyInput);
     });
 
   //   $("#title-input, #body-input").on("keyup keydown", function(key) { //the function to activate idea when user presses enter
@@ -15,16 +16,26 @@ $(document).ready(function () {
   //     }
   // });
 
-  var arr = [];
+  var localArr = [];
 
     function transferIdeaToBottom($titleInput, $bodyInput) {
+
+      fillLocalArray();
+    }
+
+    function fillLocalArray() {
       var inputObject = {};
       inputObject.title = $titleInput;
       inputObject.body = $bodyInput;
       inputObject.id = Date.now();
       inputObject.quality = "swill";
-      arr.push(inputObject);
-      console.log(arr[0]);
+      localArr.push(inputObject);
+      console.log(localArr[0]);
+    }
+
+
+
+
       var stringifiedArray = JSON.stringify(arr);
       localStorage.setItem('array', stringifiedArray);
       var stringifiedObj = JSON.stringify(inputObject);
