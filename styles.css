@@ -14,7 +14,7 @@ body {
   width: 100%;
 }
 h1 {
-  font-size: 200%;
+  font-size: 250%;
   margin: 25px;
 }
 #header-idea {
@@ -52,9 +52,22 @@ button:hover {
   width: 100%;
 }
 #each-idea-container {
-
+  margin: 20px;
 }
 h3 {
   color: #6E6D71;
+  font-family: 'Roboto Slab', serif;
   font-size: 130%;
+}
+p {
+  color: #939598;
+}
+#designation-quality {
+  font-family: 'Roboto Slab', serif;
+}
+h6 {
+  color: #6E6D71;
+}
+hr {
+  color: #D1D3D4;
 }

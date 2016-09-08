@@ -25,7 +25,7 @@ $(document).ready(function () {
     var qualityRating = "text";
 
     function createIdeaContainer(newTitle, newBody) {
-        var newSection = "<section id='each-idea-container'><h3>"+newTitle+"</h3><p>"+newBody+"</p><img id='upvote' src=''><img id='downvote' src=''><h6>Quality: "+qualityRating+"</h6></section>";
+        var newSection = "<section id='each-idea-container'><h3>"+newTitle+"</h3><p>"+newBody+"</p><img id='upvote' src=''><img id='downvote' src=''><h6><span id='designation-quality'>quality</span>: "+qualityRating+"</h6></section><hr>";
         $("#user-ideas").prepend(newSection);
     }
 
