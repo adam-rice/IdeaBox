@@ -24,6 +24,7 @@ $(document).ready(function () {
       inputObject.id = Date.now();
       inputObject.quality = "swill";
       arr.push(inputObject);
+      console.log(arr[0]);
       var stringifiedArray = JSON.stringify(arr);
       localStorage.setItem('array', stringifiedArray);
       var stringifiedObj = JSON.stringify(inputObject);
@@ -44,16 +45,17 @@ $(document).ready(function () {
     }
 
     $("#user-ideas").on("click", "#delete", function() {
-      $(this).parent().parent().remove();
-      // removeIdeaFromArray();
+      // $(this).parent().parent().remove();
+      console.log(this.closest("#each-idea-container"));
+      removeIdeaFromArray();
       });
 
-    // function removeIdeaFromArray() {
-    //   var gottenArray = localStorage.getItem('array');
-    //   var parsedArray = JSON.parse(gottenArray);
-    //   parsedArray.splice(1, 1);
-    //   console.log(parsedArray[1]);
-    // }
+    function removeIdeaFromArray() {
+      var gottenArray = localStorage.getItem('array');
+      var parsedArray = JSON.parse(gottenArray);
+      parsedArray.splice(1, 1);
+      // console.log(parsedArray[1]);
+    }
 
     function clearInputFields() {
         $("#title-input").val("");
