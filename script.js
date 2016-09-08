@@ -17,16 +17,17 @@ $(document).ready(function () {
   //     }
   // });
 
+  var arr = [];
+
     function transferIdeaToBottom($titleInput, $bodyInput) {
-      var arr = [];
       var inputObject = {};
       inputObject.title = $titleInput;
       inputObject.body = $bodyInput;
       inputObject.id = Date.now();
       inputObject.quality = "swill";
       arr.push(inputObject);
-      console.log(arr[0]);
-      console.log(arr[1]);
+      var stringifiedArray = JSON.stringify(arr);
+      console.log(stringifiedArray);
       var stringifiedObj = JSON.stringify(inputObject);
       localStorage.setItem('userInput', stringifiedObj);
       var gottenItem = localStorage.getItem('userInput');
@@ -40,7 +41,7 @@ $(document).ready(function () {
     }
 
     function createIdeaContainer(newTitle, newBody, newQuality) {
-        var newSection = "<section id='each-idea-container'><h3>"+newTitle+"</h3><p>"+newBody+"</p><img id='upvote' src=''><img id='downvote' src=''><h6>Quality: "+newQuality+"</h6></section>";
+        var newSection = "<section id='each-idea-container'><h3>"+newTitle+"</h3><p>"+newBody+"</p><img id='upvote' src=''><img id='downvote' src=''><img id='delete' src=''><h6>Quality: "+newQuality+"</h6></section>";
         $("#user-ideas").prepend(newSection);
     }
 
@@ -50,15 +51,16 @@ $(document).ready(function () {
     }
 
     $(window).on("load", function() {
+
         // alert('hi');
     //     debugger;
-      var gottenItem = localStorage.getItem('userInput');
-      var parsed = JSON.parse(gottenItem);
-      var newTitle = parsed.title;
-      var newBody = parsed.body;
-      var newId = parsed.id;
-      var newQuality = parsed.quality;
-      createIdeaContainer(newTitle, newBody, newQuality);
+    //   var gottenItem = localStorage.getItem('userInput');
+    //   var parsed = JSON.parse(gottenItem);
+    //   var newTitle = parsed.title;
+    //   var newBody = parsed.body;
+    //   var newId = parsed.id;
+    //   var newQuality = parsed.quality;
+    //   createIdeaContainer(newTitle, newBody, newQuality);
     });
 
 
