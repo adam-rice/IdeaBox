@@ -39,12 +39,12 @@ $(document).ready(function () {
     }
 
     function createIdeaContainer(newTitle, newBody, newQuality) {
-        var newSection = "<section id='each-idea-container'><h3>"+newTitle+"</h3><p>"+newBody+"</p><figure id='upvote'></figure><figure id='downvote'></figure><figure id='delete'></figure><h6><span id='designation-quality'>quality</span>: "+newQuality+"</h6><hr></section>";
+        var newSection = "<section id='each-idea-container'> <header><h3>"+newTitle+"</h3><figure id='delete'></figure></header> <p>"+newBody+"</p> <footer><figure id='upvote'></figure><figure id='downvote'></figure><h6><span id='designation-quality'>quality</span>: "+newQuality+"</h6></footer> <hr> </section>";
         $("#user-ideas").prepend(newSection);
     }
 
     $("#user-ideas").on("click", "#delete", function() {
-      // $(this).parent().remove();
+      $(this).parent().parent().remove();
       removeIdeaFromArray();
       });
 
