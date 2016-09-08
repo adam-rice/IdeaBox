@@ -53,14 +53,18 @@ $(document).ready(function () {
     $(window).on("load", function() {
       var gottenArray = localStorage.getItem('array');
       var parsedArray = JSON.parse(gottenArray);
-      
+      for (var i = 0; i < parsedArray.length; i++) {
+        var obj = parsedArray[i];
+        var newTitle = parsedArray[i].title;
+        console.log(newTitle);
+      }
 
 
 
       var obj1 = parsedArray[0];
       var newTitle = obj1.title;
       var newBody = obj1.body;
-      console.log(newBody);
+      // console.log(newBody);
 
         // alert('hi');
     //     debugger;
