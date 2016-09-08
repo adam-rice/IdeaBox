@@ -14,7 +14,7 @@ body {
   width: 100%;
 }
 h1 {
-  font-size: 250%;
+  font-size: 275%;
   margin: 25px;
 }
 #header-idea {
@@ -29,6 +29,7 @@ input {
   width: 450px;
   margin: 15px;
   outline: none;
+  text-indent: 10px;
 }
 button {
   background-color: #00A79D;
