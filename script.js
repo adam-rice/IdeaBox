@@ -18,11 +18,13 @@ $(document).ready(function () {
   // });
 
     function transferIdeaToBottom($titleInput, $bodyInput) {
+      var arr = [];
       var inputObject = {};
       inputObject.title = $titleInput;
       inputObject.body = $bodyInput;
       inputObject.id = Date.now();
       inputObject.quality = "swill";
+      arr.push(inputObject);
       var stringifiedObj = JSON.stringify(inputObject);
       localStorage.setItem('userInput', stringifiedObj);
       var gottenItem = localStorage.getItem('userInput');
