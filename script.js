@@ -43,6 +43,14 @@ $(document).ready(function () {
         $("#user-ideas").prepend(newSection);
     }
 
+    $("#delete").on("click", function() {
+      deleteIdea();
+      });
+
+    function deleteIdea() {
+
+    }
+
     function clearInputFields() {
         $("#title-input").val("");
         $("#body-input").val("");
