@@ -72,3 +72,19 @@ h6 {
 hr {
   color: #D1D3D4;
 }
+img {
+  height: 20px;
+  width: 20px;
+}
+#upvote:hover {
+  cursor: pointer;
+
+}
+#downvote {
+  cursor: pointer;
+
+}
+#delete {
+  cursor: pointer;
+  
+}
