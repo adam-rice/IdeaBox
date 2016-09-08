@@ -44,16 +44,17 @@ $(document).ready(function () {
     }
 
     $("#user-ideas").on("click", "#delete", function() {
+      console.log(event.target);
       // $(this).parent().remove();
-      removeIdeaFromArray();
+      // removeIdeaFromArray();
       });
 
-    function removeIdeaFromArray() {
-      var gottenArray = localStorage.getItem('array');
-      var parsedArray = JSON.parse(gottenArray);
-      // parsedArray.splice(1, 1);
-      // console.log(parsedArray[1]);
-    }
+    // function removeIdeaFromArray() {
+    //   var gottenArray = localStorage.getItem('array');
+    //   var parsedArray = JSON.parse(gottenArray);
+    //   parsedArray.splice(1, 1);
+    //   console.log(parsedArray[1]);
+    // }
 
     function clearInputFields() {
         $("#title-input").val("");
