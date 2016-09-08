@@ -43,7 +43,7 @@ $(document).ready(function () {
         $("#user-ideas").prepend(newSection);
     }
 
-    $("#user-ideas").on("click", "img", function() {
+    $("#user-ideas").on("click", "#delete", function() {
       // deleteIdea();
       console.log(this);
       $(this).parent().remove();
