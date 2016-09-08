@@ -44,15 +44,15 @@ $(document).ready(function () {
     }
 
     $("#user-ideas").on("click", "#delete", function() {
-      // deleteIdea();
-      console.log(this);
       $(this).parent().remove();
+      removeIdeaFromArray();
       });
 
-    // function deleteIdea() {
-    //
-    //
-    // }
+    function removeIdeaFromArray() {
+      var gottenArray = localStorage.getItem('array');
+      var parsedArray = JSON.parse(gottenArray);
+      
+    }
 
     function clearInputFields() {
         $("#title-input").val("");
