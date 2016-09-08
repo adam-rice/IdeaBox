@@ -56,15 +56,18 @@ $(document).ready(function () {
       for (var i = 0; i < parsedArray.length; i++) {
         var obj = parsedArray[i];
         var newTitle = parsedArray[i].title;
-        console.log(newTitle);
+        var newBody = parsedArray[i].body;
+        var newId = parsedArray[i].id;
+        var newQuality = parsedArray[i].quality;
+        
       }
 
 
 
-      var obj1 = parsedArray[0];
-      var newTitle = obj1.title;
-      var newBody = obj1.body;
-      // console.log(newBody);
+      // var obj1 = parsedArray[0];
+      // var newTitle = obj1.title;
+      // var newBody = obj1.body;
+      // // console.log(newBody);
 
         // alert('hi');
     //     debugger;
