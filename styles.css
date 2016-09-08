@@ -54,20 +54,34 @@ button:hover {
 }
 #each-idea-container {
   margin: 20px;
+  width: 450px;
+}
+#each-idea-container header {
+  height: 32px;
+  width: 100%;
 }
 h3 {
   color: #6E6D71;
   font-family: 'Roboto Slab', serif;
   font-size: 130%;
+  float: left;
 }
 p {
   color: #939598;
+  position: relative;
+}
+#each-idea-container footer {
+  height: 24px;
+  width: 100%;
+  margin: 30px 0 30px 0;
 }
 #designation-quality {
   font-family: 'Roboto Slab', serif;
 }
 h6 {
   color: #6E6D71;
+  display: inline-block;
+  margin-left: 25px;
 }
 hr {
   color: #D1D3D4;
@@ -83,18 +97,22 @@ figure:hover {
 }
 #upvote {
   background-image: url('images/upvote.svg');
+  display: inline-block;
 }
 #upvote:hover {
   background-image: url('images/upvote-hover.svg');
 }
 #downvote {
   background-image: url('images/downvote.svg');
+  display: inline-block;
+  margin-left: 20px;
 }
 #downvote:hover {
   background-image: url('images/downvote-hover.svg');
 }
 #delete {
   background-image: url('images/delete.svg');
+  float: right;
 }
 #delete:hover {
   background-image: url('images/delete-hover.svg');
