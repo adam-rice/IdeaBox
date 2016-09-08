@@ -52,7 +52,8 @@ $(document).ready(function () {
 
     $(window).on("load", function() {
       var gottenArray = localStorage.getItem('array');
-      console.log(gottenArray);
+      var parsedArray = JSON.parse(gottenArray);
+      
 
         // alert('hi');
     //     debugger;
