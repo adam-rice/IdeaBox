@@ -51,9 +51,8 @@ $(document).ready(function () {
     function removeIdeaFromArray() {
       var gottenArray = localStorage.getItem('array');
       var parsedArray = JSON.parse(gottenArray);
+      // parsedArray.splice(1, 1);
       // console.log(parsedArray[1]);
-      parsedArray.splice(1, 1);
-      console.log(parsedArray[1]);
     }
 
     function clearInputFields() {
