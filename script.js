@@ -27,7 +27,7 @@ $(document).ready(function () {
       inputObject.quality = "swill";
       arr.push(inputObject);
       var stringifiedArray = JSON.stringify(arr);
-      console.log(stringifiedArray);
+      localStorage.setItem('array', stringifiedArray);
       var stringifiedObj = JSON.stringify(inputObject);
       localStorage.setItem('userInput', stringifiedObj);
       var gottenItem = localStorage.getItem('userInput');
@@ -51,6 +51,7 @@ $(document).ready(function () {
     }
 
     $(window).on("load", function() {
+      var gottenArray = localStorage.getItem(arr);
 
         // alert('hi');
     //     debugger;
