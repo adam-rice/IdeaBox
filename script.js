@@ -43,15 +43,16 @@ $(document).ready(function () {
         $("#user-ideas").prepend(newSection);
     }
 
-    $(document).on("click", "img #delete", function() {
-      alert('hi');
-      deleteIdea();
+    $("#user-ideas").on("click", "img", function() {
+      // deleteIdea();
+      console.log(this);
+      $(this).parent().remove();
       });
 
-    function deleteIdea() {
-      // console.log(this);
-      // $(this).parent().remove();
-    }
+    // function deleteIdea() {
+    //
+    //
+    // }
 
     function clearInputFields() {
         $("#title-input").val("");
