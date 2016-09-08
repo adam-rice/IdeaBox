@@ -1,7 +1,5 @@
 $(document).ready(function () {
 
-
-
     $("#save-button").click(function () {
       var $titleInput = $("#title-input").val();
       var $bodyInput = $("#body-input").val();
@@ -41,7 +39,7 @@ $(document).ready(function () {
     }
 
     function createIdeaContainer(newTitle, newBody, newQuality) {
-        var newSection = "<section id='each-idea-container'><h3>"+newTitle+"</h3><p>"+newBody+"</p><img id='upvote' src=''><img id='downvote' src=''><img id='delete' src=''><h6>Quality: "+newQuality+"</h6></section>";
+        var newSection = "<section id='each-idea-container'><h3>"+newTitle+"</h3><p>"+newBody+"</p><img id='upvote' src=''><img id='downvote' src=''><img id='delete' src=''><h6><span id='designation-quality'>quality</span>: "+newQuality+"</h6><hr></section>";
         $("#user-ideas").prepend(newSection);
     }
 
