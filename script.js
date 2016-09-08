@@ -55,6 +55,13 @@ $(document).ready(function () {
       var parsedArray = JSON.parse(gottenArray);
       
 
+
+
+      var obj1 = parsedArray[0];
+      var newTitle = obj1.title;
+      var newBody = obj1.body;
+      console.log(newBody);
+
         // alert('hi');
     //     debugger;
     //   var gottenItem = localStorage.getItem('userInput');
