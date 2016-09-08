@@ -8,7 +8,7 @@ $(document).ready(function () {
       transferIdeaToBottom($titleInput, $bodyInput);
     });
 
-  //   $("#title-input, #body-input").on("keyup keydown", function(key) {
+  //   $("#title-input, #body-input").on("keyup keydown", function(key) { //the function to activate idea when user presses enter
   //     debugger;
   //     var $titleInput = $("#title-input").val();
   //     var $bodyInput = $("#body-input").val();
