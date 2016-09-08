@@ -1,34 +1,29 @@
 $(document).ready(function () {
 
-    var localArr = [];
+    var pageArr = [];
 
     $("#save-button").click(function () {
       var $titleInput = $("#title-input").val();
       var $bodyInput = $("#body-input").val();
       // transferIdeaToBottom($titleInput, $bodyInput);
-      fillLocalArray($titleInput, $bodyInput);
+      fillPageArray($titleInput, $bodyInput);
     });
 
-    function fillLocalArray($titleInput, $bodyInput) {
+    function fillPageArray($titleInput, $bodyInput) {
       var inputObject = {};
       inputObject.title = $titleInput;
       inputObject.body = $bodyInput;
       inputObject.id = Date.now();
       inputObject.quality = "swill";
-      localArr.push(inputObject);
-      console.log(localArr[0]);
+      pageArr.push(inputObject);
+      console.log(pageArr[0]);
+    }
+
+    function fillLocalStorageArray() {
+
     }
 
 
-
-  //   $("#title-input, #body-input").on("keyup keydown", function(key) { //the function to activate idea when user presses enter
-  //     debugger;
-  //     var $titleInput = $("#title-input").val();
-  //     var $bodyInput = $("#body-input").val();
-  //     if (key.which === 13) { // the enter key
-  //       transferIdeaToBottom($titleInput, $bodyInput);
-  //     }
-  // });
 
 
 
@@ -88,6 +83,16 @@ $(document).ready(function () {
         createIdeaContainer(newTitle, newBody, newQuality);
       }
 
+
+
+      //   $("#title-input, #body-input").on("keyup keydown", function(key) { //the function to activate idea when user presses enter
+      //     debugger;
+      //     var $titleInput = $("#title-input").val();
+      //     var $bodyInput = $("#body-input").val();
+      //     if (key.which === 13) { // the enter key
+      //       transferIdeaToBottom($titleInput, $bodyInput);
+      //     }
+      // });
 
 
       // var obj1 = parsedArray[0];
