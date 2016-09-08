@@ -25,6 +25,8 @@ $(document).ready(function () {
       inputObject.id = Date.now();
       inputObject.quality = "swill";
       arr.push(inputObject);
+      console.log(arr[0]);
+      console.log(arr[1]);
       var stringifiedObj = JSON.stringify(inputObject);
       localStorage.setItem('userInput', stringifiedObj);
       var gottenItem = localStorage.getItem('userInput');
