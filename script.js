@@ -40,7 +40,6 @@ $(document).ready(function () {
     clearInputFields();
   });
 
-
   function objectify(newIdea) {
     var obj = {};
     obj.title = newIdea.title;
@@ -62,15 +61,15 @@ $(document).ready(function () {
 
   function clearInputFields() {
       $("#title-input").val("");
-      $("#body-input").val(""); 
+      $("#body-input").val("");
      }
 
+  $("#user-ideas").on("click", ".delete", function() {
+    
+    });
 
 
-    //   var stringifiedArray = JSON.stringify(arr);
-    //   localStorage.setItem('array', stringifiedArray);
-    //   var stringifiedObj = JSON.stringify(inputObject);
-    //   localStorage.setItem('userInput', stringifiedObj);
+
     //   var gottenItem = localStorage.getItem('userInput');
     //   var parsed = JSON.parse(gottenItem);
     //   var newTitle = parsed.title;
