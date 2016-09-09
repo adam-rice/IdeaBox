@@ -1,8 +1,29 @@
 $(document).ready(function () {
 
-    var pageArr = [];
-    var $titleInput = $("#title-input").val();
-    var $bodyInput = $("#body-input").val();
+  var $titleInput = $("#title-input").val();
+  var $bodyInput = $("#body-input").val();
+  var $saveButton = $("#save-button");
+
+  var $userIdeas = $("#user-ideas"); //the container for ideas, static in DOM
+
+  function Idea (title, body, id, quality) {
+    this.title = title;
+    this.body = body;
+    this.id = id || Date.now();
+    this.quality = quality || "swill";
+  }
+
+
+
+
+
+
+
+
+
+
+
+
 
   function Idea(title, body, id, quality) {
   this.title = title;
@@ -28,7 +49,7 @@ $(document).ready(function () {
     `
   };
 
-  $("#save-button").click(function () {
+  $saveButton.click(function () {
     var $titleInput = $("#title-input").val();
     var $bodyInput = $("#body-input").val();
     var newIdea = new Idea($titleInput, $bodyInput);
