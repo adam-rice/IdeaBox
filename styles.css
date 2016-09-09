@@ -52,11 +52,11 @@ button:hover {
   align-items: center;
   width: 100%;
 }
-#each-idea-container {
+.each-idea-container {
   margin: 20px;
   width: 450px;
 }
-#each-idea-container header {
+.each-idea-container header {
   height: 32px;
   width: 100%;
 }
@@ -70,12 +70,12 @@ p {
   color: #939598;
   position: relative;
 }
-#each-idea-container footer {
+.each-idea-container footer {
   height: 24px;
   width: 100%;
   margin: 30px 0 30px 0;
 }
-#designation-quality {
+.designation-quality {
   font-family: 'Roboto Slab', serif;
 }
 h6 {
@@ -95,25 +95,25 @@ figure {
 figure:hover {
   cursor: pointer;
 }
-#upvote {
+.upvote {
   background-image: url('images/upvote.svg');
   display: inline-block;
 }
-#upvote:hover {
+.upvote:hover {
   background-image: url('images/upvote-hover.svg');
 }
-#downvote {
+.downvote {
   background-image: url('images/downvote.svg');
   display: inline-block;
   margin-left: 20px;
 }
-#downvote:hover {
+.downvote:hover {
   background-image: url('images/downvote-hover.svg');
 }
-#delete {
+.delete {
   background-image: url('images/delete.svg');
   float: right;
 }
-#delete:hover {
+.delete:hover {
   background-image: url('images/delete-hover.svg');
 }
