@@ -61,8 +61,8 @@ $(document).ready(function () {
   }
 
   function clearInputFields() {
-         $("#title-input").val("");
-         $("#body-input").val("");
+      $("#title-input").val("");
+      $("#body-input").val(""); 
      }
 
 
