@@ -103,6 +103,11 @@ $(document).ready(function () {
       for (var i = 0; i < restored.length; i++) {
         if (restored[i].id === idOfTarget) {
           alert('hi');
+          //remove targeted element from array
+        }
+        else if (restored[i].staticId === idOfTarget) {
+          alert('hello');
+          //also remove targeted element from array
         }
       }
     }
