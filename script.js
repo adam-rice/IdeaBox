@@ -13,6 +13,30 @@ $(document).ready(function () {
     this.quality = quality || "swill";
   }
 
+  function ideaManager() {
+    ideaArray = [];
+    add: function (title, body) {
+      this.ideaArray.push(new Idea(title, body));
+    }
+    find: function (id) {
+      var id = parseInt(id);
+      var foundIdea;
+      for (var i = 0; i < ideaArray.length; i++) {
+        if (this.ideaArray[i].id === id) {
+          foundIdea = this.ideaArray[i];
+          break;
+        }
+      }
+      return foundIdea;
+    } // end of find function
+    render: function () {
+      $("#user-ideas").html("");
+      for (var i = 0; i < ideaArray.length; i++) {
+        var idea = this.ideaArray[i];
+        $("#user-ideas").prepend(idea.toHTML());
+      }
+    }
+  }
 
 
 
