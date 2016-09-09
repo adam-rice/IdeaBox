@@ -82,7 +82,7 @@ $(document).ready(function () {
       var title = restoredData[i].title;
       var body = restoredData[i].body;
       var id = restoredData[i].id;
-      var staticId = "dogs";
+      var staticId = restoredData[i].id;
       var quality = restoredData[i].quality;
       console.log(staticId + "is static id.");
       var newIdea = new Idea(title, body, id, quality, staticId);
