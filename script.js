@@ -34,12 +34,17 @@ $(document).ready(function () {
     ideaManager.remove(this.id);
   };
 
+
+
   var ideaManager = {
+
     ideaArray: [],
+
     add: function (title, body) {
       this.ideaArray.push(new Idea(title, body));
       this.store();
     },
+
     find: function (id) {
       var id2 = parseInt(id);
       var foundIdea;
@@ -51,13 +56,15 @@ $(document).ready(function () {
       }
       return foundIdea;
     }, // end of find function
+
     render: function () {
       $("#user-ideas").html("");
-      for (var i = 0; i < ideaArray.length; i++) {
+      for (var i = 0; i < this.ideaArray.length; i++) {
         var idea = this.ideaArray[i];
         $("#user-ideas").prepend(idea.toHTML());
       }
     }, // end of render function
+
     store: function () {
       localStorage.setItem("ideas", JSON.stringify(this.ideaArray));
       this.render();
@@ -67,7 +74,7 @@ $(document).ready(function () {
       if (retrievedIdeas) {
         for (var i = 0; i < retrievedIdeas.length; i++) {
           var idea2 = retrievedIdeas[i];
-          ideaArray.push(new Idea(idea2.title, idea2.body, idea2.id, idea2.quality));
+          this.ideaArray.push(new Idea(idea2.title, idea2.body, idea2.id, idea2.quality));
         }
       }
     }, // end of retrieve function
