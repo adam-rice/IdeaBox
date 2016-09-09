@@ -64,8 +64,19 @@ $(document).ready(function () {
       $("#body-input").val("");
      }
 
+  $(window).on("load", function() {
+    var restoredData = fromLocalStorage();
+    console.log(restoredData[0]);
+    });
+
+
+  function fromLocalStorage() {
+    var restoredArray = localStorage.getItem('newArray');
+    return JSON.parse(restoredArray);
+  }
+
   $("#user-ideas").on("click", ".delete", function() {
-    
+
     });
 
 
