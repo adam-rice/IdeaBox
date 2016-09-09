@@ -4,11 +4,12 @@ $(document).ready(function () {
     var $titleInput = $("#title-input").val();
     var $bodyInput = $("#body-input").val();
 
-  function Idea(title, body, id, quality) {
+  function Idea(title, body, id, quality, staticId) {
   this.title = title;
   this.body = body;
   this.id = Date.now();
   this.quality = "swill";
+  this.staticId = "default";
   }
 
   Idea.prototype.createNewIdeaInstance = function () {
@@ -19,6 +20,7 @@ $(document).ready(function () {
                 <figure class='delete'></figure>
             </header>
                 <p>${this.body}</p>
+                <p>${this.staticId}</p>
             <footer>
                 <figure class='upvote'></figure>
                 <figure class='downvote'></figure>
@@ -81,8 +83,8 @@ $(document).ready(function () {
       var body = restoredData[i].body;
       var staticId = restoredData[i].id;
       var quality = restoredData[i].quality;
-      // console.log(id + "is restored id.");
-      var newIdea = new Idea(title, body, id, quality);
+      console.log(staticId + "is static id.");
+      var newIdea = new Idea(title, body, quality);
       var newIdeaText = newIdea.createNewIdeaInstance();
       $("#user-ideas").prepend(newIdeaText);
     }
