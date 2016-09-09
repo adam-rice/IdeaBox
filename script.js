@@ -14,7 +14,7 @@ $(document).ready(function () {
   }
 
   Idea.prototype.toHTML = function () {
-    return (`
+    return $(`
         <section class='each-idea-card' id=${this.id}>
             <header>
                 <h3>${this.title}</h3>
@@ -30,10 +30,15 @@ $(document).ready(function () {
     `);
   };
 
+  Idea.prototype.remove = function () {
+    ideaManager.remove(this.id);
+  };
+
   var ideaManager = {
     ideaArray: [],
     add: function (title, body) {
       this.ideaArray.push(new Idea(title, body));
+      this.store();
     },
     find: function (id) {
       var id2 = parseInt(id);
@@ -55,6 +60,7 @@ $(document).ready(function () {
     }, // end of render function
     store: function () {
       localStorage.setItem("ideas", JSON.stringify(this.ideaArray));
+      this.render();
     },
     retrieve: function () {
       var retrievedIdeas = JSON.stringify(localStorage.getItem("ideas"));
@@ -74,7 +80,7 @@ $(document).ready(function () {
     },
   }; // end of ideaManager
 
-  $saveButton.on("click", function (event) {
+  $saveButton.on("click", function (event) { //when they click on save
     // event.preventDefault();
     var title = $("#title-input").val();
     var body = $("#body-input").val();
@@ -85,13 +91,14 @@ $(document).ready(function () {
     $("#body-input").val("");
   });
 
-  $("#user-ideas").on("click", ".delete", function () {
+  $("#user-ideas").on("click", ".delete", function () { //when they click on delete to remove an idea
     var id = $(this).parent.parent(".each-idea-card").attr("id");
     ideaManager.find(id).remove();
   });
 
 
-
+  ideaManager.retrieve();
+  ideaManager.render();
 
   //
   //
