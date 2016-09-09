@@ -103,6 +103,10 @@ $(document).ready(function () {
       }
     }
 
+    $("#user-ideas").on("click", ".upvote", function() {
+      alert('hi');
+    });
+
 
 
 
