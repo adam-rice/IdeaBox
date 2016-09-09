@@ -13,13 +13,13 @@ $(document).ready(function () {
     this.quality = quality || "swill";
   }
 
-  function ideaManager() {
-    ideaArray = [];
+  var ideaManager = {
+    ideaArray: [],
     add: function (title, body) {
       this.ideaArray.push(new Idea(title, body));
-    }
+    },
     find: function (id) {
-      var id = parseInt(id);
+      var id2 = parseInt(id);
       var foundIdea;
       for (var i = 0; i < ideaArray.length; i++) {
         if (this.ideaArray[i].id === id) {
@@ -28,17 +28,17 @@ $(document).ready(function () {
         }
       }
       return foundIdea;
-    } // end of find function
+    }, // end of find function
     render: function () {
       $("#user-ideas").html("");
       for (var i = 0; i < ideaArray.length; i++) {
         var idea = this.ideaArray[i];
         $("#user-ideas").prepend(idea.toHTML());
       }
-    } // end of render function
+    }, // end of render function
     store: function () {
       localStorage.setItem("ideas", JSON.stringify(this.ideaArray));
-    }
+    },
     retrieve: function () {
       var retrievedIdeas = JSON.stringify(localStorage.getItem("ideas"));
       if (retrievedIdeas) {
@@ -47,15 +47,15 @@ $(document).ready(function () {
           ideaArray.push(new Idea(idea2.title, idea2.body, idea2.id, idea2.quality));
         }
       }
-    } // end of retrieve function
+    }, // end of retrieve function
     remove: function (id) {
       id2 = parseInt(id);
       this.ideaArray = this.ideaArray.filter(function (idea) {
         return idea.id !== id;
       });
       this.store();
-    }
-  } // end of ideaManager
+    },
+  }; // end of ideaManager
 
 
 
@@ -63,17 +63,6 @@ $(document).ready(function () {
 
 
 
-
-
-
-
-
-  function Idea(title, body, id, quality) {
-  this.title = title;
-  this.body = body;
-  this.id = Date.now();
-  this.quality = "swill";
-  }
 
   Idea.prototype.createNewIdeaInstance = function () {
     return `
