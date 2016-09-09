@@ -35,7 +35,8 @@ $(document).ready(function () {
     var newIdeaText = newIdea.createNewIdeaInstance();
     $("#user-ideas").prepend(newIdeaText);
     var newObject = objectify(newIdea);
-    console.log(newObject);
+    pageArr = arrayify(newObject);
+    console.log(pageArr);
   });
 
 
@@ -48,9 +49,9 @@ $(document).ready(function () {
     return obj;
   }
 
-  function arrayify(obj) {
-    pageArr.push(obj);
-    console.log(pageArr);
+  function arrayify(newObject) {
+    pageArr.push(newObject);
+    return pageArr;
   }
 
 
