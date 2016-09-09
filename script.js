@@ -109,6 +109,11 @@ $(document).ready(function () {
     ideaManager.find(id).upvote();
   });
 
+  $("#user-ideas").on("click", ".downvote", function () {
+    var id = $(this).closest(".each-idea-card").attr("id");
+    ideaManager.find(id).downvote();
+  });
+
   Idea.prototype.upvote = function () {
     if (this.quality === "swill") {
       this.quality = "plausible";
@@ -118,6 +123,16 @@ $(document).ready(function () {
     }
       ideaManager.store();
   }; //end of upvote
+
+  Idea.prototype.downvote = function () {
+    if (this.quality === "genius") {
+      this.quality = "plausible";
+    }
+    else if (this.quality === "plausible") {
+      this.quality = "swill";
+    }
+    ideaManager.store();
+  }; //end of downvote
 
   ideaManager.retrieve();
   ideaManager.render();
