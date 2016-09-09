@@ -4,23 +4,21 @@ $(document).ready(function () {
     var $titleInput = $("#title-input").val();
     var $bodyInput = $("#body-input").val();
 
-  function Idea(title, body, id, quality, staticId) {
+  function Idea(title, body, id, quality) {
   this.title = title;
   this.body = body;
   this.id = Date.now();
   this.quality = "swill";
-  this.staticId = staticId;
   }
 
   Idea.prototype.createNewIdeaInstance = function () {
     return `
-        <section class='each-idea-container' id=${this.staticId}>
+        <section class='each-idea-container' id=${this.id}>
             <header>
                 <h3>${this.title}</h3>
                 <figure class='delete'></figure>
             </header>
                 <p>${this.body}</p>
-                <p>${this.staticId}</p>
             <footer>
                 <figure class='upvote'></figure>
                 <figure class='downvote'></figure>
@@ -82,10 +80,8 @@ $(document).ready(function () {
       var title = restoredData[i].title;
       var body = restoredData[i].body;
       var id = restoredData[i].id;
-      var staticId = restoredData[i].id;
       var quality = restoredData[i].quality;
-      // console.log(staticId + "is static id.");
-      var newIdea = new Idea(title, body, id, quality, staticId);
+      var newIdea = new Idea(title, body, id, quality);
       var newIdeaText = newIdea.createNewIdeaInstance();
       $("#user-ideas").prepend(newIdeaText);
     }
@@ -101,14 +97,7 @@ $(document).ready(function () {
     function getRidOfBadIdea(idOfTarget) {
       var restored = JSON.parse(localStorage.getItem('newArray'));
       for (var i = 0; i < restored.length; i++) {
-        if (restored[i].id === idOfTarget) {
-          alert('hi');
-          //remove targeted element from array
-        }
-        else if (restored[i].staticId === idOfTarget) {
-          alert('hello');
-          //also remove targeted element from array
-        }
+        
       }
     }
 
