@@ -88,37 +88,15 @@ $(document).ready(function () {
   }
 
   $("#user-ideas").on("click", ".delete", function() {
-
+    var targetToGetRidOf = $(this).closest(".each-idea-container");
+    var idOfTarget = targetToGetRidOf.attr("id");
+    console.log(idOfTarget);
     });
 
 
-    // $(window).on("load", function() {
-   //       var gottenArray = localStorage.getItem('array');
-   //       var parsedArray = JSON.parse(gottenArray);
-   //       for (var i = 0; i < parsedArray.length; i++) {
-   //         var obj = parsedArray[i];
-   //         var newTitle = parsedArray[i].title;
-   //         var newBody = parsedArray[i].body;
-   //         var newId = parsedArray[i].id;
-   //         var newQuality = parsedArray[i].quality;
-   //         createIdeaContainer(newTitle, newBody, newQuality);
-   //       }
 
-    //   var gottenItem = localStorage.getItem('userInput');
-    //   var parsed = JSON.parse(gottenItem);
-    //   var newTitle = parsed.title;
-    //   var newBody = parsed.body;
-    //   var newId = parsed.id;
-    //   var newQuality = parsed.quality;
-    //   createIdeaContainer(newTitle, newBody, newQuality);
-    //   clearInputFields();
-    // }
 
-//     function createIdeaContainer(newTitle, newBody, newQuality) {
-//
-//         $("#user-ideas").prepend();
-//     }
-//
+
 //     $("#user-ideas").on("click", "#delete", function() {
 //     //   $(this).parent().parent().remove();
 //         var targetToGetRidOf = $(this).closest("#user-ideas");
