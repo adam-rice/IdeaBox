@@ -111,9 +111,9 @@ $(document).ready(function () {
 
   Idea.prototype.upvote = function () {
     if (this.quality === "swill") {
-      
+      this.quality = "plausible";
     }
-      //
+      ideaManager.store();
   };
 
   ideaManager.retrieve();
