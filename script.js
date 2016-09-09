@@ -4,15 +4,34 @@ $(document).ready(function () {
     var $titleInput = $("#title-input").val();
     var $bodyInput = $("#body-input").val();
 
-  function Idea(title, body, id = Date.now(), quality = "swill") {
+  function Idea(title, body, id = Date.now(), quality =   "swill") {
   this.title = title;
   this.body = body;
   this.quality = quality;
   this.id = id;
-}
+  }
 
-var dog = new Idea("Hello", "Bark");
-console.log(dog.quality);
+  Idea.prototype.createNewIdeaInstance = function () {
+    return `
+        <section class='each-idea-container' id=${this.id}>
+            <header>
+                <h3>${this.title}</h3>
+                <figure class='delete'></figure>
+            </header>
+                <p>${this.body}</p>
+            <footer>
+                <figure class='upvote'></figure>
+                <figure class='downvote'></figure>
+                <h6><span class='designation-quality'>quality</span>:${this.quality}</h6>
+            </footer><hr>
+        </section>
+    `
+  };
+
+  var dog = new Idea("Hello", "Bark");
+  console.log(dog.createNewIdeaInstance());
+
+
 
     $("#save-button").click(function () {
 
@@ -60,20 +79,7 @@ console.log(dog.quality);
 
     function createIdeaContainer(newTitle, newBody, newQuality) {
 
-        $("#user-ideas").prepend(`
-            <section class='each-idea-container' id=${this.id}>
-                <header>
-                    <h3>${this.title}</h3>
-                    <figure class='delete'></figure>
-                </header>
-                    <p>${this.body}</p>
-                <footer>
-                    <figure class='upvote'></figure>
-                    <figure class='downvote'></figure>
-                    <h6><span class='designation-quality'>quality</span>:${this.quality}</h6>
-                </footer><hr>
-            </section>
-        `);
+        $("#user-ideas").prepend();
     }
 
     $("#user-ideas").on("click", "#delete", function() {
