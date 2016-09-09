@@ -34,7 +34,14 @@ $(document).ready(function () {
     var newIdea = new Idea($titleInput, $bodyInput);
     var newIdeaText = newIdea.createNewIdeaInstance();
     $("#user-ideas").prepend(newIdeaText);
+    putIdeaInJSON(newIdeaText);
   });
+
+  function putIdeaInJSON(newIdeaText) {
+    
+  }
+
+
 
 
 
