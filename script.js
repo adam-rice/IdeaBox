@@ -14,7 +14,7 @@ $(document).ready(function () {
 
   Idea.prototype.createNewIdeaInstance = function () {
     return `
-        <section class='each-idea-container' id=${this.id}>
+        <section class='each-idea-container' id=${this.staticId}>
             <header>
                 <h3>${this.title}</h3>
                 <figure class='delete'></figure>
@@ -84,7 +84,7 @@ $(document).ready(function () {
       var id = restoredData[i].id;
       var staticId = restoredData[i].id;
       var quality = restoredData[i].quality;
-      console.log(staticId + "is static id.");
+      // console.log(staticId + "is static id.");
       var newIdea = new Idea(title, body, id, quality, staticId);
       var newIdeaText = newIdea.createNewIdeaInstance();
       $("#user-ideas").prepend(newIdeaText);
@@ -94,8 +94,16 @@ $(document).ready(function () {
   $("#user-ideas").on("click", ".delete", function() {
     var targetToGetRidOf = $(this).closest(".each-idea-container");
     var idOfTarget = parseInt(targetToGetRidOf.attr("id"));
-    console.log(idOfTarget + "is target id.");
-    getRidOfBadIdea(idOfTarget);
+    console.log(idOfTarget);
+
+
+
+    // var idWeWantToDeleteFromStorage = parseInt(ideaArticle.attr("id"));
+
+    //
+    // var idOfTarget = parseInt(targetToGetRidOf.attr("staticId"));
+    // console.log(idOfTarget + "is target id.");
+    // getRidOfBadIdea(idOfTarget);
     // targetToGetRidOf.remove(); //need to comment back in when done harder function
     });
 
