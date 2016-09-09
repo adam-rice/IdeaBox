@@ -134,6 +134,10 @@ $(document).ready(function () {
     ideaManager.store();
   }; //end of downvote
 
+  $("#user-ideas").on("click", "h3", function () {
+    
+  });
+
   ideaManager.retrieve();
   ideaManager.render();
 
