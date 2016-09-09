@@ -42,7 +42,11 @@ $(document).ready(function () {
   function objectify(newIdea) {
     var obj = {};
     obj.title = newIdea.title;
+    obj.body = newIdea.body;
+    obj.id = newIdea.id;
+    obj.quality = newIdea.quality;
     console.log(obj);
+
   }
 
 
