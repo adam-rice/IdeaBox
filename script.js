@@ -45,8 +45,12 @@ $(document).ready(function () {
     obj.body = newIdea.body;
     obj.id = newIdea.id;
     obj.quality = newIdea.quality;
-    console.log(obj);
+    arrayify(obj);
+  }
 
+  function arrayify(obj) {
+    pageArr.push(obj);
+    console.log(pageArr);
   }
 
 
