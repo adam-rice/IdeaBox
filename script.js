@@ -7,8 +7,8 @@ $(document).ready(function () {
   function Idea(title, body, id, quality) {
   this.title = title;
   this.body = body;
-  this.quality = "swill";
   this.id = Date.now();
+  this.quality = "swill";
   }
 
   Idea.prototype.createNewIdeaInstance = function () {
@@ -79,8 +79,9 @@ $(document).ready(function () {
     for (var i = 0; i < restoredData.length; i++) {
       var title = restoredData[i].title;
       var body = restoredData[i].body;
-      var id = restoredData[i].id;
+      var staticId = restoredData[i].id;
       var quality = restoredData[i].quality;
+      // console.log(id + "is restored id.");
       var newIdea = new Idea(title, body, id, quality);
       var newIdeaText = newIdea.createNewIdeaInstance();
       $("#user-ideas").prepend(newIdeaText);
@@ -104,7 +105,7 @@ $(document).ready(function () {
     }
 
     $("#user-ideas").on("click", ".upvote", function() {
-      alert('hi');
+      //also depends on solving id problem!
     });
 
 
