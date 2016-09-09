@@ -1,16 +1,26 @@
 $(document).ready(function () {
 
     var pageArr = [];
+    var $titleInput = $("#title-input").val();
+    var $bodyInput = $("#body-input").val();
+
+  function Idea(title, body, id = Date.now(), quality = "swill") {
+  this.title = title;
+  this.body = body;
+  this.quality = quality;
+  this.id = id;
+}
+
+var dog = new Idea("Hello", "Bark");
+console.log(dog.quality);
 
     $("#save-button").click(function () {
-      var $titleInput = $("#title-input").val();
-      var $bodyInput = $("#body-input").val();
+
       // transferIdeaToBottom($titleInput, $bodyInput);
-      fillPageArray($titleInput, $bodyInput);
+      FillPageArray($titleInput, $bodyInput);
     });
 
-    function fillPageArray(title, body, id, quality) {
-      inputObject = {};
+    function FillPageArray(title, body, id, quality) {
       this.title = title;
       this.body = body;
       this.id = Date.now();
