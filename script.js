@@ -34,12 +34,21 @@ $(document).ready(function () {
     var newIdea = new Idea($titleInput, $bodyInput);
     var newIdeaText = newIdea.createNewIdeaInstance();
     $("#user-ideas").prepend(newIdeaText);
-    putIdeaInJSON(newIdeaText);
+    objectify(newIdea);
+    // putIdeaInJSON(newIdeaText);
   });
 
-  function putIdeaInJSON(newIdeaText) {
-    
+
+  function objectify(newIdea) {
+    var obj = {};
+    obj.title = newIdea.title;
+    console.log(obj);
   }
+
+
+  // function putIdeaInJSON(newIdeaText) {
+  //
+  // }
 
 
 
