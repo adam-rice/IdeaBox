@@ -113,8 +113,11 @@ $(document).ready(function () {
     if (this.quality === "swill") {
       this.quality = "plausible";
     }
+    else if (this.quality === "plausible") {
+      this.quality = "genius";
+    }
       ideaManager.store();
-  };
+  }; //end of upvote
 
   ideaManager.retrieve();
   ideaManager.render();
