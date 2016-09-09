@@ -32,7 +32,8 @@ $(document).ready(function () {
     var $titleInput = $("#title-input").val();
     var $bodyInput = $("#body-input").val();
     var newIdea = new Idea($titleInput, $bodyInput);
-    console.log(newIdea.createNewIdeaInstance());
+    var newIdeaText = newIdea.createNewIdeaInstance();
+    $("#user-ideas").prepend(newIdeaText);
   });
 
 
