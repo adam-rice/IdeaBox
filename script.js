@@ -56,7 +56,7 @@ $(document).ready(function () {
 
   function toLocalStorage(pageArr) {
     var stringifiedArray = JSON.stringify(pageArr);
-    console.log(stringifiedArray);
+    localStorage.setItem('newArray', stringifiedArray); 
   }
 
 
