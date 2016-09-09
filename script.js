@@ -34,8 +34,8 @@ $(document).ready(function () {
     var newIdea = new Idea($titleInput, $bodyInput);
     var newIdeaText = newIdea.createNewIdeaInstance();
     $("#user-ideas").prepend(newIdeaText);
-    objectify(newIdea);
-    // putIdeaInJSON(newIdeaText);
+    var newObject = objectify(newIdea);
+    console.log(newObject);
   });
 
 
@@ -45,7 +45,7 @@ $(document).ready(function () {
     obj.body = newIdea.body;
     obj.id = newIdea.id;
     obj.quality = newIdea.quality;
-    arrayify(obj);
+    return obj;
   }
 
   function arrayify(obj) {
