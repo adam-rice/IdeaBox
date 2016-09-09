@@ -78,7 +78,12 @@ $(document).ready(function () {
   function putDataBackOnPage(restoredData) {
     for (var i = 0; i < restoredData.length; i++) {
       var title = restoredData[i].title;
-      console.log(title);
+      var body = restoredData[i].body;
+      var id = restoredData[i].id;
+      var quality = restoredData[i].quality;
+      var newIdea = new Idea(title, body, id, quality);
+      var newIdeaText = newIdea.createNewIdeaInstance();
+      $("#user-ideas").prepend(newIdeaText);
     }
   }
 
