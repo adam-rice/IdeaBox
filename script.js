@@ -13,7 +13,7 @@ $(document).ready(function () {
 
   Idea.prototype.createNewIdeaInstance = function () {
     return `
-        <section class='each-idea-container' id=${this.id}>
+        <section class='each-idea-card' id=${this.id}>
             <header>
                 <h3>${this.title}</h3>
                 <figure class='delete'></figure>
@@ -97,7 +97,7 @@ $(document).ready(function () {
     function getRidOfBadIdea(idOfTarget) {
       var restored = JSON.parse(localStorage.getItem('newArray'));
       for (var i = 0; i < restored.length; i++) {
-        
+
       }
     }
 
