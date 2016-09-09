@@ -34,12 +34,9 @@ $(document).ready(function () {
     ideaManager.remove(this.id);
   };
 
-
-
   var ideaManager = {
 
     ideaArray: [],
-
 
     add: function (title, body) {
       this.ideaArray.push(new Idea(title, body));
@@ -72,9 +69,9 @@ $(document).ready(function () {
       localStorage.setItem("ideas", JSON.stringify(this.ideaArray));
       this.render();
     },
+
     retrieve: function () {
       var retrievedIdeas = JSON.parse(localStorage.getItem("ideas"));
-
       if (retrievedIdeas) {
         for (var i = 0; i < retrievedIdeas.length; i++) {
           var idea = retrievedIdeas[i];
@@ -82,6 +79,7 @@ $(document).ready(function () {
         }
       }
     }, // end of retrieve function
+
     remove: function (id) {
       id2 = parseInt(id);
       this.ideaArray = this.ideaArray.filter(function (idea) {
@@ -89,15 +87,13 @@ $(document).ready(function () {
       });
       this.store();
     },
-  }; // end of ideaManager
 
+  }; // end of ideaManager
 
   $saveButton.on("click", function (event) { //when they click on save
     // event.preventDefault();
     var title = $("#title-input").val();
     var body = $("#body-input").val();
-    console.log(title);
-    console.log(body);
     ideaManager.add(title, body);
     $("#title-input").val("");
     $("#body-input").val("");
@@ -105,11 +101,20 @@ $(document).ready(function () {
 
   $("#user-ideas").on("click", ".delete", function () { //when they click on delete to remove an idea
     var id = $(this).closest(".each-idea-card").attr("id");
-    // console.log(id);
-    // console.log(ideaManager.find(id));
     ideaManager.find(id).remove();
   });
 
+  $("#user-ideas").on("click", ".upvote", function () {
+    var id = $(this).closest(".each-idea-card").attr("id");
+    ideaManager.find(id).upvote();
+  });
+
+  Idea.prototype.upvote = function () {
+    if (this.quality === "swill") {
+      
+    }
+      //
+  };
 
   ideaManager.retrieve();
   ideaManager.render();
