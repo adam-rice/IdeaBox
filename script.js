@@ -94,24 +94,16 @@ $(document).ready(function () {
   $("#user-ideas").on("click", ".delete", function() {
     var targetToGetRidOf = $(this).closest(".each-idea-container");
     var idOfTarget = parseInt(targetToGetRidOf.attr("id"));
-    console.log(idOfTarget);
-
-
-
-    // var idWeWantToDeleteFromStorage = parseInt(ideaArticle.attr("id"));
-
-    //
-    // var idOfTarget = parseInt(targetToGetRidOf.attr("staticId"));
-    // console.log(idOfTarget + "is target id.");
-    // getRidOfBadIdea(idOfTarget);
+    getRidOfBadIdea(idOfTarget);
     // targetToGetRidOf.remove(); //need to comment back in when done harder function
     });
 
     function getRidOfBadIdea(idOfTarget) {
       var restored = JSON.parse(localStorage.getItem('newArray'));
       for (var i = 0; i < restored.length; i++) {
-        var id = restored[i].id;
-        console.log(id + "is existing id.");
+        if (restored[i].id === idOfTarget) {
+          alert('hi');
+        }
       }
     }
 
