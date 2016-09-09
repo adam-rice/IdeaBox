@@ -35,8 +35,27 @@ $(document).ready(function () {
         var idea = this.ideaArray[i];
         $("#user-ideas").prepend(idea.toHTML());
       }
+    } // end of render function
+    store: function () {
+      localStorage.setItem("ideas", JSON.stringify(this.ideaArray));
     }
-  }
+    retrieve: function () {
+      var retrievedIdeas = JSON.stringify(localStorage.getItem("ideas"));
+      if (retrievedIdeas) {
+        for (var i = 0; i < retrievedIdeas.length; i++) {
+          var idea2 = retrievedIdeas[i];
+          ideaArray.push(new Idea(idea2.title, idea2.body, idea2.id, idea2.quality));
+        }
+      }
+    } // end of retrieve function
+    remove: function (id) {
+      id2 = parseInt(id);
+      this.ideaArray = this.ideaArray.filter(function (idea) {
+        return idea.id !== id;
+      });
+      this.store();
+    }
+  } // end of ideaManager
 
 
 
