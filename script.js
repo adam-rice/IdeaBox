@@ -90,8 +90,13 @@ $(document).ready(function () {
   $("#user-ideas").on("click", ".delete", function() {
     var targetToGetRidOf = $(this).closest(".each-idea-container");
     var idOfTarget = targetToGetRidOf.attr("id");
-    console.log(idOfTarget);
+    getRidOfBadIdea(idOfTarget);
     });
+
+    function getRidOfBadIdea() {
+      var restoredData = fromLocalStorage();
+      
+    }
 
 
 
