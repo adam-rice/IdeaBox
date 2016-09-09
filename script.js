@@ -13,6 +13,23 @@ $(document).ready(function () {
     this.quality = quality || "swill";
   }
 
+  Idea.prototype.toHTML = function () {
+    return (`
+        <section class='each-idea-card' id=${this.id}>
+            <header>
+                <h3>${this.title}</h3>
+                <figure class='delete'></figure>
+            </header>
+                <p>${this.body}</p>
+            <footer>
+                <figure class='upvote'></figure>
+                <figure class='downvote'></figure>
+                <h6><span class='designation-quality'>quality</span>:${this.quality}</h6>
+            </footer><hr>
+        </section>
+    `);
+  };
+
   var ideaManager = {
     ideaArray: [],
     add: function (title, body) {
@@ -57,108 +74,95 @@ $(document).ready(function () {
     },
   }; // end of ideaManager
 
-
-
-
-
-
-
-
-  Idea.prototype.createNewIdeaInstance = function () {
-    return `
-        <section class='each-idea-card' id=${this.id}>
-            <header>
-                <h3>${this.title}</h3>
-                <figure class='delete'></figure>
-            </header>
-                <p>${this.body}</p>
-            <footer>
-                <figure class='upvote'></figure>
-                <figure class='downvote'></figure>
-                <h6><span class='designation-quality'>quality</span>:${this.quality}</h6>
-            </footer><hr>
-        </section>
-    `
-  };
-
-  $saveButton.click(function () {
-    var $titleInput = $("#title-input").val();
-    var $bodyInput = $("#body-input").val();
-    var newIdea = new Idea($titleInput, $bodyInput);
-    var newIdeaText = newIdea.createNewIdeaInstance();
-    $("#user-ideas").prepend(newIdeaText);
-    var newObject = objectify(newIdea);
-    pageArr = arrayify(newObject);
-    toLocalStorage(pageArr);
-    clearInputFields();
+  $saveButton.on("click", function (event) {
+    // event.preventDefault();
+    var title = $("#title-input").val();
+    var body = $("#body-input").val();
+    console.log(title);
+    console.log(body);
+    ideaManager.add(title, body);
+    $("#title-input").val("");
+    $("#body-input").val("");
   });
 
-  function objectify(newIdea) {
-    var obj = {};
-    obj.title = newIdea.title;
-    obj.body = newIdea.body;
-    obj.id = newIdea.id;
-    obj.quality = newIdea.quality;
-    return obj;
-  }
-
-  function arrayify(newObject) {
-    pageArr.push(newObject);
-    return pageArr;
-  }
-
-  function toLocalStorage(pageArr) {
-    var stringifiedArray = JSON.stringify(pageArr);
-    localStorage.setItem('newArray', stringifiedArray);
-  }
-
-  function clearInputFields() {
-      $("#title-input").val("");
-      $("#body-input").val("");
-     }
-
-  $(window).on("load", function() {
-    var restoredData = fromLocalStorage();
-    putDataBackOnPage(restoredData);
-    });
+  $("#user-ideas").on("click", ".delete", function () {
+    var id = $(this).parent.parent(".each-idea-card").attr("id");
+    ideaManager.find(id).remove();
+  });
 
 
-  function fromLocalStorage() {
-    var restoredArray = localStorage.getItem('newArray');
-    return JSON.parse(restoredArray);
-  }
-
-  function putDataBackOnPage(restoredData) {
-    for (var i = 0; i < restoredData.length; i++) {
-      var title = restoredData[i].title;
-      var body = restoredData[i].body;
-      var id = restoredData[i].id;
-      var quality = restoredData[i].quality;
-      var newIdea = new Idea(title, body, id, quality);
-      var newIdeaText = newIdea.createNewIdeaInstance();
-      $("#user-ideas").prepend(newIdeaText);
-    }
-  }
-
-  $("#user-ideas").on("click", ".delete", function() {
-    var targetToGetRidOf = $(this).closest(".each-idea-container");
-    var idOfTarget = parseInt(targetToGetRidOf.attr("id"));
-    getRidOfBadIdea(idOfTarget);
-    // targetToGetRidOf.remove(); //need to comment back in when done harder function
-    });
-
-    function getRidOfBadIdea(idOfTarget) {
-      var restored = JSON.parse(localStorage.getItem('newArray'));
-      for (var i = 0; i < restored.length; i++) {
-
-      }
-    }
-
-    $("#user-ideas").on("click", ".upvote", function() {
-      //also depends on solving id problem!
-    });
 
 
+  //
+  //
+  //
+  //
+  // function objectify(newIdea) {
+  //   var obj = {};
+  //   obj.title = newIdea.title;
+  //   obj.body = newIdea.body;
+  //   obj.id = newIdea.id;
+  //   obj.quality = newIdea.quality;
+  //   return obj;
+  // }
+  //
+  // function arrayify(newObject) {
+  //   pageArr.push(newObject);
+  //   return pageArr;
+  // }
+  //
+  // function toLocalStorage(pageArr) {
+  //   var stringifiedArray = JSON.stringify(pageArr);
+  //   localStorage.setItem('newArray', stringifiedArray);
+  // }
+  //
+  // function clearInputFields() {
+  //     $("#title-input").val("");
+  //     $("#body-input").val("");
+  //    }
+  //
+  // $(window).on("load", function() {
+  //   var restoredData = fromLocalStorage();
+  //   putDataBackOnPage(restoredData);
+  //   });
+  //
+  //
+  // function fromLocalStorage() {
+  //   var restoredArray = localStorage.getItem('newArray');
+  //   return JSON.parse(restoredArray);
+  // }
+  //
+  // function putDataBackOnPage(restoredData) {
+  //   for (var i = 0; i < restoredData.length; i++) {
+  //     var title = restoredData[i].title;
+  //     var body = restoredData[i].body;
+  //     var id = restoredData[i].id;
+  //     var quality = restoredData[i].quality;
+  //     var newIdea = new Idea(title, body, id, quality);
+  //     var newIdeaText = newIdea.createNewIdeaInstance();
+  //     $("#user-ideas").prepend(newIdeaText);
+  //   }
+  // }
+  //
+  // $("#user-ideas").on("click", ".delete", function() {
+  //   var targetToGetRidOf = $(this).closest(".each-idea-container");
+  //   var idOfTarget = parseInt(targetToGetRidOf.attr("id"));
+  //   getRidOfBadIdea(idOfTarget);
+  //   // targetToGetRidOf.remove(); //need to comment back in when done harder function
+  //   });
+  //
+  //   function getRidOfBadIdea(idOfTarget) {
+  //     var restored = JSON.parse(localStorage.getItem('newArray'));
+  //     for (var i = 0; i < restored.length; i++) {
+  //
+  //     }
+  //   }
+  //
+  //   $("#user-ideas").on("click", ".upvote", function() {
+  //     //also depends on solving id problem!
+  //   });
+  //
+  //
 
 
 
