@@ -40,16 +40,18 @@ $(document).ready(function () {
 
     ideaArray: [],
 
+
     add: function (title, body) {
       this.ideaArray.push(new Idea(title, body));
       this.store();
+
     },
 
     find: function (id) {
       var id2 = parseInt(id);
       var foundIdea;
-      for (var i = 0; i < ideaArray.length; i++) {
-        if (this.ideaArray[i].id === id) {
+      for (var i = 0; i < this.ideaArray.length; i++) {
+        if (this.ideaArray[i].id === id2) {
           foundIdea = this.ideaArray[i];
           break;
         }
@@ -61,6 +63,7 @@ $(document).ready(function () {
       $("#user-ideas").html("");
       for (var i = 0; i < this.ideaArray.length; i++) {
         var idea = this.ideaArray[i];
+
         $("#user-ideas").prepend(idea.toHTML());
       }
     }, // end of render function
@@ -70,11 +73,12 @@ $(document).ready(function () {
       this.render();
     },
     retrieve: function () {
-      var retrievedIdeas = JSON.stringify(localStorage.getItem("ideas"));
+      var retrievedIdeas = JSON.parse(localStorage.getItem("ideas"));
+
       if (retrievedIdeas) {
         for (var i = 0; i < retrievedIdeas.length; i++) {
-          var idea2 = retrievedIdeas[i];
-          this.ideaArray.push(new Idea(idea2.title, idea2.body, idea2.id, idea2.quality));
+          var idea = retrievedIdeas[i];
+          this.ideaArray.push(new Idea(idea.title, idea.body, idea.id, idea.quality));
         }
       }
     }, // end of retrieve function
@@ -86,6 +90,7 @@ $(document).ready(function () {
       this.store();
     },
   }; // end of ideaManager
+
 
   $saveButton.on("click", function (event) { //when they click on save
     // event.preventDefault();
@@ -99,7 +104,9 @@ $(document).ready(function () {
   });
 
   $("#user-ideas").on("click", ".delete", function () { //when they click on delete to remove an idea
-    var id = $(this).parent.parent(".each-idea-card").attr("id");
+    var id = $(this).closest(".each-idea-card").attr("id");
+    // console.log(id);
+    // console.log(ideaManager.find(id));
     ideaManager.find(id).remove();
   });
 
