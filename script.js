@@ -9,7 +9,7 @@ $(document).ready(function () {
   this.body = body;
   this.id = Date.now();
   this.quality = "swill";
-  this.staticId = "default";
+  this.staticId = staticId;
   }
 
   Idea.prototype.createNewIdeaInstance = function () {
@@ -81,10 +81,11 @@ $(document).ready(function () {
     for (var i = 0; i < restoredData.length; i++) {
       var title = restoredData[i].title;
       var body = restoredData[i].body;
-      var staticId = restoredData[i].id;
+      var id = restoredData[i].id;
+      var staticId = "dogs";
       var quality = restoredData[i].quality;
       console.log(staticId + "is static id.");
-      var newIdea = new Idea(title, body, quality);
+      var newIdea = new Idea(title, body, id, quality, staticId);
       var newIdeaText = newIdea.createNewIdeaInstance();
       $("#user-ideas").prepend(newIdeaText);
     }
