@@ -17,7 +17,7 @@ $(document).ready(function () {
     return $(`
         <section class='each-idea-card' id=${this.id}>
             <header>
-                <h3>${this.title}</h3>
+                <h3 contenteditable='true'>${this.title}</h3>
                 <figure class='delete'></figure>
             </header>
                 <p>${this.body}</p>
@@ -134,9 +134,10 @@ $(document).ready(function () {
     ideaManager.store();
   }; //end of downvote
 
-  $("#user-ideas").on("click", "h3", function () {
-    
-  });
+  // $("#user-ideas").on("click", "h3", function () {
+  //   var input = $(this).replaceWith("<input type='text'/>");
+  //
+  // });
 
   ideaManager.retrieve();
   ideaManager.render();
