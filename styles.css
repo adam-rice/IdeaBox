@@ -119,5 +119,7 @@ figure:hover {
 }
 
 .editing-input-contenteditable {
-  background-color: yellow;
+  border: 1px solid black;
+  min-width: 200px;
+  padding: 5px;
 }

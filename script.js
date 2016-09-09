@@ -95,6 +95,7 @@ $(document).ready(function () {
     var title = $("#title-input").val();
     var body = $("#body-input").val();
     ideaManager.add(title, body);
+    saveEditableField();
     $("#title-input").val("");
     $("#body-input").val("");
   });
@@ -134,9 +135,15 @@ $(document).ready(function () {
     ideaManager.store();
   }; //end of downvote
 
-  $("#user-ideas").on("keyup keydown mouseenter", "h3", function () {
+  $("#user-ideas").on("keyup keydown click", "h3", function () {
     $(this).addClass("editing-input-contenteditable");
   });
+
+  function saveEditableField() {
+    
+  }
+
+  //look up blur to solve issue when user clicks out of editable text box
 
   ideaManager.retrieve();
   ideaManager.render();
