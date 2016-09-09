@@ -37,6 +37,7 @@ $(document).ready(function () {
     var newObject = objectify(newIdea);
     pageArr = arrayify(newObject);
     toLocalStorage(pageArr);
+    clearInputFields();
   });
 
 
@@ -56,10 +57,13 @@ $(document).ready(function () {
 
   function toLocalStorage(pageArr) {
     var stringifiedArray = JSON.stringify(pageArr);
-    localStorage.setItem('newArray', stringifiedArray); 
+    localStorage.setItem('newArray', stringifiedArray);
   }
 
-
+  function clearInputFields() {
+         $("#title-input").val("");
+         $("#body-input").val("");
+     }
 
 
 
