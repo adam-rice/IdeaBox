@@ -66,7 +66,7 @@ $(document).ready(function () {
 
   $(window).on("load", function() {
     var restoredData = fromLocalStorage();
-    console.log(restoredData[0]);
+    putDataBackOnPage(restoredData);
     });
 
 
@@ -75,11 +75,29 @@ $(document).ready(function () {
     return JSON.parse(restoredArray);
   }
 
+  function putDataBackOnPage(restoredData) {
+    for (var i = 0; i < restoredData.length; i++) {
+      var title = restoredData[i].title;
+      console.log(title);
+    }
+  }
+
   $("#user-ideas").on("click", ".delete", function() {
 
     });
 
 
+    // $(window).on("load", function() {
+   //       var gottenArray = localStorage.getItem('array');
+   //       var parsedArray = JSON.parse(gottenArray);
+   //       for (var i = 0; i < parsedArray.length; i++) {
+   //         var obj = parsedArray[i];
+   //         var newTitle = parsedArray[i].title;
+   //         var newBody = parsedArray[i].body;
+   //         var newId = parsedArray[i].id;
+   //         var newQuality = parsedArray[i].quality;
+   //         createIdeaContainer(newTitle, newBody, newQuality);
+   //       }
 
     //   var gottenItem = localStorage.getItem('userInput');
     //   var parsed = JSON.parse(gottenItem);
@@ -116,17 +134,7 @@ $(document).ready(function () {
 //         $("#body-input").val("");
 //     }
 //
-//     $(window).on("load", function() {
-//       var gottenArray = localStorage.getItem('array');
-//       var parsedArray = JSON.parse(gottenArray);
-//       for (var i = 0; i < parsedArray.length; i++) {
-//         var obj = parsedArray[i];
-//         var newTitle = parsedArray[i].title;
-//         var newBody = parsedArray[i].body;
-//         var newId = parsedArray[i].id;
-//         var newQuality = parsedArray[i].quality;
-//         createIdeaContainer(newTitle, newBody, newQuality);
-//       }
+//
 //
 //
 //
