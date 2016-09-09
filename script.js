@@ -36,7 +36,7 @@ $(document).ready(function () {
     $("#user-ideas").prepend(newIdeaText);
     var newObject = objectify(newIdea);
     pageArr = arrayify(newObject);
-    console.log(pageArr);
+    toLocalStorage(pageArr);
   });
 
 
@@ -54,44 +54,10 @@ $(document).ready(function () {
     return pageArr;
   }
 
-
-  // function putIdeaInJSON(newIdeaText) {
-  //
-  // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //
-    // function FillPageArray(title, body, id, quality) {
-    //   this.title = title;
-    //   this.body = body;
-    //   this.id = Date.now();
-    //   this.quality = 'swill';
-    //   pageArr.push(inputObject);
-    //   console.log(pageArr[0]);
-    // }
-    //
-    // function fillLocalStorageArray() {
-    //
-    // }
-
-
-
-
-
-    // function transferIdeaToBottom($titleInput, $bodyInput) {
-
+  function toLocalStorage(pageArr) {
+    var stringifiedArray = JSON.stringify(pageArr);
+    console.log(stringifiedArray);
+  }
 
 
 
