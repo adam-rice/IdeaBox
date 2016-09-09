@@ -134,10 +134,9 @@ $(document).ready(function () {
     ideaManager.store();
   }; //end of downvote
 
-  // $("#user-ideas").on("click", "h3", function () {
-  //   var input = $(this).replaceWith("<input type='text'/>");
-  //
-  // });
+  $("#user-ideas").on("keyup keydown mouseenter", "h3", function () {
+    $(this).addClass("editing-input-contenteditable");
+  });
 
   ideaManager.retrieve();
   ideaManager.render();

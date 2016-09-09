@@ -117,3 +117,7 @@ figure:hover {
 .delete:hover {
   background-image: url('images/delete-hover.svg');
 }
+
+.editing-input-contenteditable {
+  background-color: yellow;
+}
