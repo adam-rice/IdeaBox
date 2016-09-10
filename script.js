@@ -190,7 +190,10 @@ $(document).ready(function () {
     var search = $(this).val();
     // console.log(search);
     for (var i = 0; i < ideaManager.ideaArray.length; i++) {
-      console.log(ideaManager.ideaArray[i].title);
+      var titles = ideaManager.ideaArray[i].title;
+      if (search === titles) {
+        alert('hi');
+      }
     }
 
     //
