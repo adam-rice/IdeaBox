@@ -3,6 +3,7 @@ $(document).ready(function () {
   var $titleInput = $("#title-input").val();
   var $bodyInput = $("#body-input").val();
   var $saveButton = $("#save-button");
+  var $searchInput = $("#search-input");
 
   var $userIdeas = $("#user-ideas"); //the container for ideas, static in DOM
 
@@ -183,6 +184,11 @@ $(document).ready(function () {
     var target = $(this).closest("p").text();
     var id = $(this).closest(".each-idea-card").attr("id");
     ideaManager.find(id).saveEditableBody(target);
+  });
+
+  $searchInput.on("keyup", function functionName() {
+    var search = $(this).val();
+    
   });
 
   ideaManager.retrieve();
