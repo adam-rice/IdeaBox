@@ -99,6 +99,12 @@ $(document).ready(function () {
     $("#body-input").val("");
   });
 
+  $("#body-input").on("keyup keydown", function (key) {
+    if (key.which === 13) {
+      alert('hi');
+    }
+  });
+
   $("#user-ideas").on("click", ".delete", function () { //when they click on delete to remove an idea
     var id = $(this).closest(".each-idea-card").attr("id");
     ideaManager.find(id).remove();
