@@ -98,7 +98,7 @@ $(document).ready(function () {
     $("#body-input").val("");
   });
 
-  $("#body-input").on("keyup keydown", function (key) { //adds new idea when they press enter
+  $("#body-input").on("keyup keydown", function (key) { //adds new idea when they press enter key
     if (key.which === 13) {
       var title = $("#title-input").val();
       var body = $("#body-input").val();
