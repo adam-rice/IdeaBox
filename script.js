@@ -1,8 +1,9 @@
-$(document).ready(function () {
 
+$(document).ready(function () {
   var $titleInput = $("#title-input").val();
   var $bodyInput = $("#body-input").val();
   var $saveButton = $("#save-button");
+  var $searchInput = $("#search-input").val();
 
   var $userIdeas = $("#user-ideas"); //the container for ideas, static in DOM
 
@@ -24,11 +25,12 @@ $(document).ready(function () {
             <footer>
                 <figure class='upvote'></figure>
                 <figure class='downvote'></figure>
-                <h6><span class='designation-quality'>quality</span>:${this.quality}</h6>
+                <h6><span class='designation-quality'>quality</span>: ${this.quality}</h6>
             </footer><hr>
         </section>
     `);
   };
+
 
   Idea.prototype.remove = function () {
     ideaManager.remove(this.id);
@@ -188,4 +190,4 @@ $(document).ready(function () {
   ideaManager.retrieve();
   ideaManager.render();
 
-}); //end of jQuery body
+});  //end of jQuery body
