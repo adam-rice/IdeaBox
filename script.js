@@ -188,11 +188,16 @@ $(document).ready(function () {
 
   $searchInput.on("keyup", function functionName() {
     var search = $(this).val();
-    console.log(search);
-    var titles = ideaManager.ideaArray[0].title;
-    if (search === titles) {
-      alert('hi');
+    // console.log(search);
+    for (var i = 0; i < ideaManager.ideaArray.length; i++) {
+      console.log(ideaManager.ideaArray[i].title);
     }
+
+    //
+    // var titles = ideaManager.ideaArray[0].title;
+    // if (search === titles) {
+    //   //something
+    // }
 
   });
 
