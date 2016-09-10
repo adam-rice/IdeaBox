@@ -137,15 +137,18 @@ $(document).ready(function () {
   $("#user-ideas").on("keyup keydown click", "h3", function (key) {
     $(this).addClass("editing-input-contenteditable");
     if (key.which === 13) {
-      var id = $(this).closest(".each-idea-card").attr("id");
-      ideaManager.find(id).saveEditableField();
+      this.title = $(this).closest("h3").text();
+      alert(this.title);
+      // var id = $(this).closest(".each-idea-card").attr("id");
+      // ideaManager.find(id).saveEditableField();
+
     }
   });
 
-  Idea.prototype.saveEditableField = function () {
-    this.title = $("h3").text();
-    ideaManager.store();
-  };
+  // Idea.prototype.saveEditableField = function () {
+  //   this.title = ("h3").text();
+  //   ideaManager.store();
+  // };
 
   //look up blur to solve issue when user clicks out of editable text box
 
