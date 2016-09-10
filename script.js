@@ -191,7 +191,7 @@ $(document).ready(function () {
     // console.log(search);
     for (var i = 0; i < ideaManager.ideaArray.length; i++) {
       var titles = ideaManager.ideaArray[i].title;
-      var regExpTitles = new RegExp(search);
+      var regExpTitles = new RegExp("t");
       var testing = regExpTitles.test(titles);
       alert(testing);
     }
