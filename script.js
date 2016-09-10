@@ -191,10 +191,12 @@ $(document).ready(function () {
     // console.log(search);
     for (var i = 0; i < ideaManager.ideaArray.length; i++) {
       var titles = ideaManager.ideaArray[i].title;
-      var regExpTitles = new RegExp("t");
+      var regExpTitles = new RegExp(search, "gi");
       var testing = regExpTitles.test(titles);
-      alert(testing);
+      console.log(testing);
     }
+
+    //use "i" in the regexp to make search case insensitive
 
     //
     // var titles = ideaManager.ideaArray[0].title;
