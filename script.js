@@ -20,7 +20,7 @@ $(document).ready(function () {
                 <h3 contenteditable='true'>${this.title}</h3>
                 <figure class='delete'></figure>
             </header>
-                <p>${this.body}</p>
+                <p contenteditable='true'>${this.body}</p>
             <footer>
                 <figure class='upvote'></figure>
                 <figure class='downvote'></figure>
