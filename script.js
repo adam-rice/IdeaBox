@@ -191,25 +191,33 @@ $(document).ready(function () {
     ideaManager.find(id).saveEditableBody(target);
   });
 
-  $searchInput.on("keyup", function functionName() {
+  $searchInput.on("keyup", function () {
     var search = $(this).val();
-    for (var i = 0; i < ideaManager.ideaArray.length; i++) {
-      var titles = ideaManager.ideaArray[i].title;
-      var regExpTitles = new RegExp(search, "gi");
-      var testSearch = regExpTitles.test(titles);
+    $("h3:contains('" + search + "')").closest(".each-idea-card").show();
+  });
 
-      if (testSearch === true) {
-        console.log("hi");
-        // $(".each-idea-card").show();
 
-      }
-      else {
 
-        // $(".each-idea-card").hide();
-      }
-    }
-
-  }); // end of search function
+  // $searchInput.on("keyup", function functionName() {
+  //   var search = $(this).val();
+  //   for (var i = 0; i < ideaManager.ideaArray.length; i++) {
+  //     var titles = ideaManager.ideaArray[i].title;
+  //     var regExpTitles = new RegExp(search, "gi");
+  //     var testSearch = regExpTitles.test(titles);
+  //
+  //     if (testSearch === true) {
+  //
+  //       // console.log("hi");
+  //       // $(".each-idea-card").show();
+  //
+  //     }
+  //     else {
+  //
+  //       // $(".each-idea-card").hide();
+  //     }
+  //   }
+  //
+  // }); // end of search function
 
   ideaManager.retrieve();
   ideaManager.render();
