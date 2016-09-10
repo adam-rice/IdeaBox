@@ -197,28 +197,10 @@ $(document).ready(function () {
     $("h3:not(:contains('" + search + "'))").closest(".each-idea-card").hide();
   });
 
-
-
-  // $searchInput.on("keyup", function functionName() {
-  //   var search = $(this).val();
-  //   for (var i = 0; i < ideaManager.ideaArray.length; i++) {
-  //     var titles = ideaManager.ideaArray[i].title;
-  //     var regExpTitles = new RegExp(search, "gi");
-  //     var testSearch = regExpTitles.test(titles);
-  //
-  //     if (testSearch === true) {
-  //
-  //       // console.log("hi");
-  //       // $(".each-idea-card").show();
-  //
-  //     }
-  //     else {
-  //
-  //       // $(".each-idea-card").hide();
-  //     }
-  //   }
-  //
-  // }); // end of search function
+  $searchInput.on("keyup", function () {
+    var search = $(this).val();
+    $("p:contains('" + search + "')").closest(".each-idea-card").show();
+  });
 
   ideaManager.retrieve();
   ideaManager.render();
