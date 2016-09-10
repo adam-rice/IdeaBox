@@ -191,9 +191,10 @@ $(document).ready(function () {
     // console.log(search);
     for (var i = 0; i < ideaManager.ideaArray.length; i++) {
       var titles = ideaManager.ideaArray[i].title;
-      if (search === titles) {
-        alert('hi');
-      }
+      var regExpTitles = new RegExp("w");
+      // if (search === regExpTitles) {
+      //   alert('hi');
+      // }
     }
 
     //
@@ -203,6 +204,19 @@ $(document).ready(function () {
     // }
 
   });
+
+  //////
+
+  function example () {
+    var example = "hi";
+    var patt = new RegExp("i");
+    var testing = patt.test(example);
+    alert(testing);
+  }
+
+example();
+
+  ////
 
   ideaManager.retrieve();
   ideaManager.render();
