@@ -194,6 +194,7 @@ $(document).ready(function () {
   $searchInput.on("keyup", function () {
     var search = $(this).val();
     $("h3:contains('" + search + "')").closest(".each-idea-card").show();
+    $("h3:not(:contains('" + search + "'))").closest(".each-idea-card").hide();
   });
 
 
