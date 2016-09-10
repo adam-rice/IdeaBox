@@ -171,7 +171,9 @@ $(document).ready(function () {
     ideaManager.store();
   };
 
-  //look up blur to solve issue when user clicks out of editable text box
+  $("#user-ideas").on("blur", "h3", function () {
+    alert('hi');
+  });
 
   ideaManager.retrieve();
   ideaManager.render();
