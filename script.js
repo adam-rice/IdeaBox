@@ -89,6 +89,11 @@ $(document).ready(function () {
       this.store();
     },
 
+    // hide: function (id) {
+    //   id3 = parseInt(id);
+    //   this.hide();
+    // }
+
   }; // end of ideaManager
 
   $saveButton.on("click", function (event) { //when they click on save
@@ -188,12 +193,16 @@ $(document).ready(function () {
 
   $searchInput.on("keyup", function functionName() {
     var search = $(this).val();
-    // console.log(search);
     for (var i = 0; i < ideaManager.ideaArray.length; i++) {
       var titles = ideaManager.ideaArray[i].title;
       var regExpTitles = new RegExp(search, "gi");
-      var testing = regExpTitles.test(titles);
-      console.log(testing);
+      var testSearch = regExpTitles.test(titles);
+      if (testSearch === true) {
+        
+      }
+      else {
+
+      }
     }
 
     //use "i" in the regexp to make search case insensitive
