@@ -91,7 +91,6 @@ $(document).ready(function () {
   }; // end of ideaManager
 
   $saveButton.on("click", function (event) { //when they click on save
-    // event.preventDefault();
     var title = $("#title-input").val();
     var body = $("#body-input").val();
     ideaManager.add(title, body);
@@ -99,9 +98,13 @@ $(document).ready(function () {
     $("#body-input").val("");
   });
 
-  $("#body-input").on("keyup keydown", function (key) {
+  $("#body-input").on("keyup keydown", function (key) { //adds new idea when they press enter
     if (key.which === 13) {
-      alert('hi');
+      var title = $("#title-input").val();
+      var body = $("#body-input").val();
+      ideaManager.add(title, body);
+      $("#title-input").val("");
+      $("#body-input").val("");
     }
   });
 
