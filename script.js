@@ -172,7 +172,7 @@ $(document).ready(function () {
   };
 
   $("#user-ideas").on("blur", "h3", function () {
-    alert('hi');
+    $(this).removeClass("editing-input-contenteditable");
   });
 
   ideaManager.retrieve();
