@@ -191,50 +191,21 @@ $(document).ready(function () {
     ideaManager.find(id).saveEditableBody(target);
   });
 
-  $searchInput.on("keyup", function () {
-     var search = $(this).val();
-     var targets = $(".each-idea-card h3").each(function () {
-       console.log($(this).text());
-     });
+  $searchInput.on("keyup", function functionName() {
+    var search = $(this).val();
+    for (var i = 0; i < ideaManager.ideaArray.length; i++) {
+      var titles = ideaManager.ideaArray[i].title;
+      var regExpTitles = new RegExp(search, "gi");
+      var testSearch = regExpTitles.test(titles);
+      if (testSearch === true) {
+        $(".each-idea-card").show();
+      }
+      else {
+        $(".each-idea-card").hide();
+      }
+    }
 
-  }); //end of search function
-
-  // $searchInput.on("keyup", function functionName() {
-  //   var search = $(this).val();
-  //   for (var i = 0; i < ideaManager.ideaArray.length; i++) {
-  //     var titles = ideaManager.ideaArray[i].title;
-  //     var regExpTitles = new RegExp(search, "gi");
-  //     var testSearch = regExpTitles.test(titles);
-  //     if (testSearch === true) {
-  //       $(".each-idea-card").show();
-  //     }
-  //     else {
-  //       $(".each-idea-card").hide();
-  //     }
-  //   }
-  //
-  //   //use "i" in the regexp to make search case insensitive
-  //
-  //   //
-  //   // var titles = ideaManager.ideaArray[0].title;
-  //   // if (search === titles) {
-  //   //   //something
-  //   // }
-  //
-  // }); // end of search function
-
-  ////// our working dummy regexp function
-
-//   function example () {
-//     var example = "hi";
-//     var patt = new RegExp("i");
-//     var testing = patt.test(example);
-//     alert(testing);
-//   }
-//
-// example();
-
-  ////
+  }); // end of search function
 
   ideaManager.retrieve();
   ideaManager.render();
