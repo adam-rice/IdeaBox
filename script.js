@@ -139,11 +139,11 @@ $(document).ready(function () {
     if (key.which === 13) {
       var target = $(this).closest("h3").text();
       var id = $(this).closest(".each-idea-card").attr("id");
-      ideaManager.find(id).saveEditableField(target);
+      ideaManager.find(id).saveEditableTitle(target);
     }
   });
 
-  Idea.prototype.saveEditableField = function (target) {
+  Idea.prototype.saveEditableTitle = function (target) {
     this.title = target;
     ideaManager.store();
   };
