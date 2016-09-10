@@ -198,10 +198,11 @@ $(document).ready(function () {
       var regExpTitles = new RegExp(search, "gi");
       var testSearch = regExpTitles.test(titles);
       if (testSearch === true) {
-        $(".each-idea-card").show();
+        // $(".each-idea-card").show();
+        alert(titles);
       }
       else {
-        $(".each-idea-card").hide();
+        // $(".each-idea-card").hide();
       }
     }
 
