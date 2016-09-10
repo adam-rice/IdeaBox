@@ -143,8 +143,22 @@ $(document).ready(function () {
     }
   });
 
+  $("#user-ideas").on("keyup keydown click", "p", function (key) {
+    $(this).addClass("editing-input-contenteditable");
+    if (key.which === 13) {
+      var target = $(this).closest("p").text();
+      var id = $(this).closest(".each-idea-card").attr("id");
+      ideaManager.find(id).saveEditableBody(target);
+    }
+  });
+
   Idea.prototype.saveEditableTitle = function (target) {
     this.title = target;
+    ideaManager.store();
+  };
+
+  Idea.prototype.saveEditableBody = function (target) {
+    this.body = target;
     ideaManager.store();
   };
 
