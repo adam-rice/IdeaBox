@@ -24,7 +24,7 @@ $(document).ready(function () {
             <footer>
                 <figure class='upvote'></figure>
                 <figure class='downvote'></figure>
-                <h6><span class='designation-quality'>quality</span>:${this.quality}</h6>
+                <h6><span class='designation-quality'>quality</span>: ${this.quality}</h6>
             </footer><hr>
         </section>
     `);
