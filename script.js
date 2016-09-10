@@ -17,10 +17,10 @@ $(document).ready(function () {
     return $(`
         <section class='each-idea-card' id=${this.id}>
             <header>
-                <h3>${this.title}</h3>
+                <h3 contenteditable='true'>${this.title}</h3>
                 <figure class='delete'></figure>
             </header>
-                <p>${this.body}</p>
+                <p contenteditable='true'>${this.body}</p>
             <footer>
                 <figure class='upvote'></figure>
                 <figure class='downvote'></figure>
@@ -91,12 +91,21 @@ $(document).ready(function () {
   }; // end of ideaManager
 
   $saveButton.on("click", function (event) { //when they click on save
-    // event.preventDefault();
     var title = $("#title-input").val();
     var body = $("#body-input").val();
     ideaManager.add(title, body);
     $("#title-input").val("");
     $("#body-input").val("");
+  });
+
+  $("#body-input").on("keyup keydown", function (key) { //adds new idea when they press enter key
+    if (key.which === 13) {
+      var title = $("#title-input").val();
+      var body = $("#body-input").val();
+      ideaManager.add(title, body);
+      $("#title-input").val("");
+      $("#body-input").val("");
+    }
   });
 
   $("#user-ideas").on("click", ".delete", function () { //when they click on delete to remove an idea
@@ -134,131 +143,49 @@ $(document).ready(function () {
     ideaManager.store();
   }; //end of downvote
 
+  $("#user-ideas").on("keyup keydown click", "h3", function (key) {
+    $(this).addClass("editing-input-contenteditable");
+    if (key.which === 13) {
+      var target = $(this).closest("h3").text();
+      var id = $(this).closest(".each-idea-card").attr("id");
+      ideaManager.find(id).saveEditableTitle(target);
+    }
+  });
+
+  $("#user-ideas").on("keyup keydown click", "p", function (key) {
+    $(this).addClass("editing-input-contenteditable");
+    if (key.which === 13) {
+      var target = $(this).closest("p").text();
+      var id = $(this).closest(".each-idea-card").attr("id");
+      ideaManager.find(id).saveEditableBody(target);
+    }
+  });
+
+  Idea.prototype.saveEditableTitle = function (target) {
+    this.title = target;
+    ideaManager.store();
+  };
+
+  Idea.prototype.saveEditableBody = function (target) {
+    this.body = target;
+    ideaManager.store();
+  };
+
+  $("#user-ideas").on("blur", "h3", function () {
+    $(this).removeClass("editing-input-contenteditable");
+    var target = $(this).closest("h3").text();
+    var id = $(this).closest(".each-idea-card").attr("id");
+    ideaManager.find(id).saveEditableTitle(target);
+  });
+
+  $("#user-ideas").on("blur", "p", function () {
+    $(this).removeClass("editing-input-contenteditable");
+    var target = $(this).closest("p").text();
+    var id = $(this).closest(".each-idea-card").attr("id");
+    ideaManager.find(id).saveEditableBody(target);
+  });
+
   ideaManager.retrieve();
   ideaManager.render();
 
-  //
-  //
-  //
-  //
-  // function objectify(newIdea) {
-  //   var obj = {};
-  //   obj.title = newIdea.title;
-  //   obj.body = newIdea.body;
-  //   obj.id = newIdea.id;
-  //   obj.quality = newIdea.quality;
-  //   return obj;
-  // }
-  //
-  // function arrayify(newObject) {
-  //   pageArr.push(newObject);
-  //   return pageArr;
-  // }
-  //
-  // function toLocalStorage(pageArr) {
-  //   var stringifiedArray = JSON.stringify(pageArr);
-  //   localStorage.setItem('newArray', stringifiedArray);
-  // }
-  //
-  // function clearInputFields() {
-  //     $("#title-input").val("");
-  //     $("#body-input").val("");
-  //    }
-  //
-  // $(window).on("load", function() {
-  //   var restoredData = fromLocalStorage();
-  //   putDataBackOnPage(restoredData);
-  //   });
-  //
-  //
-  // function fromLocalStorage() {
-  //   var restoredArray = localStorage.getItem('newArray');
-  //   return JSON.parse(restoredArray);
-  // }
-  //
-  // function putDataBackOnPage(restoredData) {
-  //   for (var i = 0; i < restoredData.length; i++) {
-  //     var title = restoredData[i].title;
-  //     var body = restoredData[i].body;
-  //     var id = restoredData[i].id;
-  //     var quality = restoredData[i].quality;
-  //     var newIdea = new Idea(title, body, id, quality);
-  //     var newIdeaText = newIdea.createNewIdeaInstance();
-  //     $("#user-ideas").prepend(newIdeaText);
-  //   }
-  // }
-  //
-  // $("#user-ideas").on("click", ".delete", function() {
-  //   var targetToGetRidOf = $(this).closest(".each-idea-container");
-  //   var idOfTarget = parseInt(targetToGetRidOf.attr("id"));
-  //   getRidOfBadIdea(idOfTarget);
-  //   // targetToGetRidOf.remove(); //need to comment back in when done harder function
-  //   });
-  //
-  //   function getRidOfBadIdea(idOfTarget) {
-  //     var restored = JSON.parse(localStorage.getItem('newArray'));
-  //     for (var i = 0; i < restored.length; i++) {
-  //
-  //     }
-  //   }
-  //
-  //   $("#user-ideas").on("click", ".upvote", function() {
-  //     //also depends on solving id problem!
-  //   });
-  //
-  //
-
-
-
-//     $("#user-ideas").on("click", "#delete", function() {
-//     //   $(this).parent().parent().remove();
-//         var targetToGetRidOf = $(this).closest("#user-ideas");
-//         console.log(targetToGetRidOf);
-//
-//       removeIdeaFromArray();
-//       });
-//
-//     function removeIdeaFromArray() {
-//       var gottenArray = localStorage.getItem('array');
-//       var parsedArray = JSON.parse(gottenArray);
-//       parsedArray.splice(1, 1);
-//       // console.log(parsedArray[1]);
-//     }
-//
-//     function clearInputFields() {
-//         $("#title-input").val("");
-//         $("#body-input").val("");
-//     }
-//
-//
-//
-//
-//
-//       //   $("#title-input, #body-input").on("keyup keydown", function(key) { //the function to activate idea when user presses enter
-//       //     debugger;
-//       //     var $titleInput = $("#title-input").val();
-//       //     var $bodyInput = $("#body-input").val();
-//       //     if (key.which === 13) { // the enter key
-//       //       transferIdeaToBottom($titleInput, $bodyInput);
-//       //     }
-//       // });
-//
-//
-//       // var obj1 = parsedArray[0];
-//       // var newTitle = obj1.title;
-//       // var newBody = obj1.body;
-//       // // console.log(newBody);
-//
-//         // alert('hi');
-//     //     debugger;
-//     //   var gottenItem = localStorage.getItem('userInput');
-//     //   var parsed = JSON.parse(gottenItem);
-//     //   var newTitle = parsed.title;
-//     //   var newBody = parsed.body;
-//     //   var newId = parsed.id;
-//     //   var newQuality = parsed.quality;
-//     //   createIdeaContainer(newTitle, newBody, newQuality);
-//     });
-//
-//
 }); //end of jQuery body

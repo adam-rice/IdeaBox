@@ -117,3 +117,9 @@ figure:hover {
 .delete:hover {
   background-image: url('images/delete-hover.svg');
 }
+
+.editing-input-contenteditable {
+  border: 1px solid black;
+  min-width: 200px;
+  padding: 5px;
+}
