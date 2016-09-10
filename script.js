@@ -191,10 +191,9 @@ $(document).ready(function () {
     // console.log(search);
     for (var i = 0; i < ideaManager.ideaArray.length; i++) {
       var titles = ideaManager.ideaArray[i].title;
-      var regExpTitles = new RegExp("w");
-      // if (search === regExpTitles) {
-      //   alert('hi');
-      // }
+      var regExpTitles = new RegExp(search);
+      var testing = regExpTitles.test(titles);
+      alert(testing);
     }
 
     //
@@ -205,16 +204,16 @@ $(document).ready(function () {
 
   });
 
-  //////
+  ////// our working dummy regexp function
 
-  function example () {
-    var example = "hi";
-    var patt = new RegExp("i");
-    var testing = patt.test(example);
-    alert(testing);
-  }
-
-example();
+//   function example () {
+//     var example = "hi";
+//     var patt = new RegExp("i");
+//     var testing = patt.test(example);
+//     alert(testing);
+//   }
+//
+// example();
 
   ////
 
