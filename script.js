@@ -178,6 +178,13 @@ $(document).ready(function () {
     ideaManager.find(id).saveEditableTitle(target);
   });
 
+  $("#user-ideas").on("blur", "p", function () {
+    $(this).removeClass("editing-input-contenteditable");
+    var target = $(this).closest("p").text();
+    var id = $(this).closest(".each-idea-card").attr("id");
+    ideaManager.find(id).saveEditableBody(target);
+  });
+
   ideaManager.retrieve();
   ideaManager.render();
 
