@@ -197,11 +197,14 @@ $(document).ready(function () {
       var titles = ideaManager.ideaArray[i].title;
       var regExpTitles = new RegExp(search, "gi");
       var testSearch = regExpTitles.test(titles);
+
       if (testSearch === true) {
+        console.log("hi");
         // $(".each-idea-card").show();
-        alert(titles);
+
       }
       else {
+
         // $(".each-idea-card").hide();
       }
     }
