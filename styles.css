@@ -122,4 +122,5 @@ figure:hover {
   border: 1px solid black;
   min-width: 200px;
   padding: 5px;
+  outline: none;
 }
