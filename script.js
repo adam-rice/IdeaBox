@@ -143,13 +143,9 @@ $(document).ready(function () {
   });
 
   Idea.prototype.saveEditableField = function () {
-    this.title = $("h3").val();
+    this.title = $("h3").text();
     ideaManager.store();
   };
-
-  // function saveEditableField() {
-  //
-  // }
 
   //look up blur to solve issue when user clicks out of editable text box
 
