@@ -135,9 +135,11 @@ $(document).ready(function () {
   Idea.prototype.upvote = function () {
     if (this.quality === "swill") {
       this.quality = "plausible";
+      this.image = "images/neutral-face-.jpg";
     }
     else if (this.quality === "plausible") {
       this.quality = "genius";
+      this.image = "images/light-bulb.jpg";
     }
       ideaManager.store();
   }; //end of upvote
