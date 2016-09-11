@@ -1,5 +1,5 @@
-
 $(document).ready(function () {
+
   var $titleInput = $("#title-input").val();
   var $bodyInput = $("#body-input").val();
   var $saveButton = $("#save-button");
@@ -31,7 +31,6 @@ $(document).ready(function () {
         </section>
     `);
   };
-
 
   Idea.prototype.remove = function () {
     ideaManager.remove(this.id);
@@ -207,4 +206,4 @@ $(document).ready(function () {
   ideaManager.retrieve();
   ideaManager.render();
 
-});  //end of jQuery body
+}); //end of jQuery body
