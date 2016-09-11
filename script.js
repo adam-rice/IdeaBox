@@ -8,11 +8,12 @@ $(document).ready(function () {
 
   var $userIdeas = $("#user-ideas"); //the container for ideas, static in DOM
 
-  function Idea (title, body, id, quality) {
+  function Idea (title, body, id, quality, image) {
     this.title = title;
     this.body = body;
     this.id = id || Date.now();
     this.quality = quality || "swill";
+    this.image = "images/thumbs-down.jpg";
   }
 
   Idea.prototype.toHTML = function () {
@@ -27,7 +28,7 @@ $(document).ready(function () {
                 <figure class='upvote'></figure>
                 <figure class='downvote'></figure>
                 <h6><span class='designation-quality'>quality</span>: ${this.quality}</h6>
-                <img src='images/thumbs-down.jpg' class='rating-img' />
+                <img src=${this.image} class='rating-img' />
             </footer><hr>
         </section>
     `);
