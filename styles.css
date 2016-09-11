@@ -1,15 +1,14 @@
 body {
   display: flex;
   flex-direction: column;
-  height: 100vh;
 }
 #input-container {
   background-color: #E5F3F2;
+  font-family: 'Roboto Slab', serif;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-family: 'Roboto Slab', serif;
   height: 400px;
   width: 100%;
 }
@@ -39,7 +38,7 @@ button {
   color: #FFFFFF;
   font-size: 120%;
   height: 32px;
-  width: 450px;
+  width: 452px;
   margin: 15px;
   outline: none;
 }
@@ -69,7 +68,7 @@ h3 {
   float: left;
   max-width: 250px;
   max-height: 32px;
-  /*overflow: hidden;*/
+  /*// WIP overflow: hidden;*/
 }
 p {
   color: #939598;
@@ -124,13 +123,9 @@ figure:hover {
 }
 
 .editing-input-contenteditable {
-  border: 1px solid black;
-  /*min-width: 200px;*/
-  padding: 5px;
-  outline: none;
-  /*max-width: 200px;*/
-  /*max-height: 20px;*/
-  /*clear: both;*/
+  border: none;
+  outline: normal;
+  outline-color: #D1D3D4;
 }
 @media screen and (max-width: 500px) {
   #input-container {
@@ -150,7 +145,7 @@ figure:hover {
   }
   button {
     font-size: 100%;
-    width: 200px;
+    width: 202px;
   }
   .each-idea-card {
     margin: 10px;
@@ -162,6 +157,7 @@ figure:hover {
   h3 {
     font-size: 120%;
     float: left;
+    max-width: 150px;
   }
   p {
     clear: both;
