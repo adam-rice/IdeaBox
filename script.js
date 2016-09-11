@@ -27,6 +27,7 @@ $(document).ready(function () {
                 <figure class='upvote'></figure>
                 <figure class='downvote'></figure>
                 <h6><span class='designation-quality'>quality</span>: ${this.quality}</h6>
+                <img src='images/thumbs-down.jpg' class='rating-img' />
             </footer><hr>
         </section>
     `);
