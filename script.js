@@ -193,13 +193,13 @@ $(document).ready(function () {
   });
 
   $searchInput.on("keyup", function () {
-    var search = $(this).val();
+    var search = $(this).val().trim();
     $("h3:contains('" + search + "')").closest(".each-idea-card").show();
     $("h3:not(:contains('" + search + "'))").closest(".each-idea-card").hide();
   });
 
   $searchInput.on("keyup", function () {
-    var search = $(this).val();
+    var search = $(this).val().trim();
     $("p:contains('" + search + "')").closest(".each-idea-card").show();
   });
 

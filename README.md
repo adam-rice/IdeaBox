@@ -65,6 +65,5 @@ Clearing the search box should restore all the ideas to the list.
 
 Final to dos:
 
-* Finish search (remember to include body too!)
 * Make responsive
 * Refactor
