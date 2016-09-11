@@ -128,9 +128,8 @@ figure:hover {
   border: none;
   outline: normal;
   outline-color: #D1D3D4;
-  /*white-space: nowrap;*/
-  /*overflow: hidden;*/
-  /*text-overflow: ellipsis;*/
+  white-space: pre-wrap;
+  overflow: hidden;
 }
 @media screen and (max-width: 500px) {
   #input-container {
