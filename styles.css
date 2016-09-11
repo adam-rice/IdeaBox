@@ -23,13 +23,15 @@ h1 {
 #header-box {
   color: #6D6E71;
 }
-input {
+input, textarea {
+  border: solid 1px #D1D3D4;
   font-size: 120%;
   height: 30px;
   width: 450px;
   margin: 15px;
   outline: none;
   text-indent: 10px;
+  resize: none;
 }
 button {
   background-color: #00A79D;
@@ -65,6 +67,9 @@ h3 {
   font-family: 'Roboto Slab', serif;
   font-size: 130%;
   float: left;
+  max-width: 250px;
+  max-height: 32px;
+  /*overflow: hidden;*/
 }
 p {
   color: #939598;
@@ -120,7 +125,57 @@ figure:hover {
 
 .editing-input-contenteditable {
   border: 1px solid black;
-  min-width: 200px;
+  /*min-width: 200px;*/
   padding: 5px;
   outline: none;
+  /*max-width: 200px;*/
+  /*max-height: 20px;*/
+  /*clear: both;*/
+}
+@media screen and (max-width: 500px) {
+  #input-container {
+    height: 300px;
+  }
+  h1 {
+    font-size: 150%;
+    margin: 15px;
+  }
+  input, textarea {
+    font-size: 100%;
+    width: 200px;
+  }
+  #body-input {
+    height: 80px;
+    white-space: wrap;
+  }
+  button {
+    font-size: 100%;
+    width: 200px;
+  }
+  .each-idea-card {
+    margin: 10px;
+    width: 200px;
+  }
+  .each-idea-card header {
+    height: 30px;
+  }
+  h3 {
+    font-size: 120%;
+    float: left;
+  }
+  p {
+    clear: both;
+  }
+  .each-idea-card footer {
+    height: 24px;
+    margin: 20px 0 20px 0;
+  }
+  h6 {
+    margin-left: 20px;
+    font-size: 80%;
+  }
+  figure {
+    height: 15px;
+    width: 15px;
+  }
 }

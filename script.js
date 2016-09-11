@@ -1,8 +1,9 @@
-$(document).ready(function () {
 
+$(document).ready(function () {
   var $titleInput = $("#title-input").val();
   var $bodyInput = $("#body-input").val();
   var $saveButton = $("#save-button");
+
   var $searchInput = $("#search-input");
 
   var $userIdeas = $("#user-ideas"); //the container for ideas, static in DOM
@@ -30,6 +31,7 @@ $(document).ready(function () {
         </section>
     `);
   };
+
 
   Idea.prototype.remove = function () {
     ideaManager.remove(this.id);
@@ -205,4 +207,4 @@ $(document).ready(function () {
   ideaManager.retrieve();
   ideaManager.render();
 
-}); //end of jQuery body
+});  //end of jQuery body
