@@ -1,9 +1,9 @@
-
 $(document).ready(function () {
+
   var $titleInput = $("#title-input").val();
   var $bodyInput = $("#body-input").val();
   var $saveButton = $("#save-button");
-  var $searchInput = $("#search-input").val();
+  var $searchInput = $("#search-input");
 
   var $userIdeas = $("#user-ideas"); //the container for ideas, static in DOM
 
@@ -30,7 +30,6 @@ $(document).ready(function () {
         </section>
     `);
   };
-
 
   Idea.prototype.remove = function () {
     ideaManager.remove(this.id);
@@ -89,6 +88,11 @@ $(document).ready(function () {
       });
       this.store();
     },
+
+    // hide: function (id) {
+    //   id3 = parseInt(id);
+    //   this.hide();
+    // }
 
   }; // end of ideaManager
 
@@ -187,7 +191,18 @@ $(document).ready(function () {
     ideaManager.find(id).saveEditableBody(target);
   });
 
+  $searchInput.on("keyup", function () {
+    var search = $(this).val();
+    $("h3:contains('" + search + "')").closest(".each-idea-card").show();
+    $("h3:not(:contains('" + search + "'))").closest(".each-idea-card").hide();
+  });
+
+  $searchInput.on("keyup", function () {
+    var search = $(this).val();
+    $("p:contains('" + search + "')").closest(".each-idea-card").show();
+  });
+
   ideaManager.retrieve();
   ideaManager.render();
 
-});  //end of jQuery body
+}); //end of jQuery body
