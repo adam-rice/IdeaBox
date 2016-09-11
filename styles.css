@@ -68,7 +68,9 @@ h3 {
   float: left;
   max-width: 250px;
   max-height: 32px;
-  /*// WIP overflow: hidden;*/
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 p {
   color: #939598;
@@ -126,6 +128,9 @@ figure:hover {
   border: none;
   outline: normal;
   outline-color: #D1D3D4;
+  /*white-space: nowrap;*/
+  /*overflow: hidden;*/
+  /*text-overflow: ellipsis;*/
 }
 @media screen and (max-width: 500px) {
   #input-container {
