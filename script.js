@@ -13,7 +13,7 @@ $(document).ready(function () {
     this.body = body;
     this.id = id || Date.now();
     this.quality = quality || "swill";
-    this.image = "images/thumbs-down.jpg";
+    this.image = image || "images/thumbs-down.jpg";
   }
 
   Idea.prototype.toHTML = function () {
@@ -79,7 +79,7 @@ $(document).ready(function () {
       if (retrievedIdeas) {
         for (var i = 0; i < retrievedIdeas.length; i++) {
           var idea = retrievedIdeas[i];
-          this.ideaArray.push(new Idea(idea.title, idea.body, idea.id, idea.quality));
+          this.ideaArray.push(new Idea(idea.title, idea.body, idea.id, idea.quality, idea.image));
         }
       }
     }, // end of retrieve function
