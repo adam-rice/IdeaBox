@@ -41,6 +41,7 @@ button {
   width: 452px;
   margin: 15px;
   outline: none;
+  transition-duration: 0.4s;
 }
 button:hover {
   background-color: #045E55;
@@ -131,6 +132,10 @@ figure:hover {
   white-space: pre-wrap;
   overflow: hidden;
 }
+ .rating-img {
+  height: 30px;
+  float: right;
+}
 @media screen and (max-width: 500px) {
   #input-container {
     height: 300px;
@@ -177,5 +182,8 @@ figure:hover {
   figure {
     height: 15px;
     width: 15px;
+  }
+  .rating-img {
+    display: none;
   }
 }
