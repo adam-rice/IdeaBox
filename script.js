@@ -13,7 +13,7 @@ $(document).ready(function () {
     this.body = body;
     this.id = id || Date.now();
     this.quality = quality || "swill";
-    this.image = image || "images/thumbs-down.jpg";
+    this.image = image || "images/pig.png";
   }
 
   Idea.prototype.toHTML = function () {
@@ -135,7 +135,7 @@ $(document).ready(function () {
   Idea.prototype.upvote = function () {
     if (this.quality === "swill") {
       this.quality = "plausible";
-      this.image = "images/neutral-face-.jpg";
+      this.image = "images/thinking.png";
     }
     else if (this.quality === "plausible") {
       this.quality = "genius";
@@ -147,11 +147,11 @@ $(document).ready(function () {
   Idea.prototype.downvote = function () {
     if (this.quality === "genius") {
       this.quality = "plausible";
-      this.image = "images/neutral-face-.jpg";
+      this.image = "images/thinking.png";
     }
     else if (this.quality === "plausible") {
       this.quality = "swill";
-      this.image = "images/thumbs-down.jpg";
+      this.image = "images/pig.png";
     }
     ideaManager.store();
   }; //end of downvote
