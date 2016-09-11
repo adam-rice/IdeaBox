@@ -1,12 +1,10 @@
+var $titleInput = $("#title-input").val();
+var $bodyInput = $("#body-input").val();
+var $saveButton = $("#save-button");
+var $searchInput = $("#search-input");
+var $userIdeas = $("#user-ideas");
+
 $(document).ready(function () {
-
-  var $titleInput = $("#title-input").val();
-  var $bodyInput = $("#body-input").val();
-  var $saveButton = $("#save-button");
-
-  var $searchInput = $("#search-input");
-
-  var $userIdeas = $("#user-ideas"); //the container for ideas, static in DOM
 
   function Idea (title, body, id, quality, image) {
     this.title = title;
@@ -61,11 +59,11 @@ $(document).ready(function () {
     }, // end of find function
 
     render: function () {
-      $("#user-ideas").html("");
+      $userIdeas.html("");
       for (var i = 0; i < this.ideaArray.length; i++) {
         var idea = this.ideaArray[i];
 
-        $("#user-ideas").prepend(idea.toHTML());
+        $userIdeas.prepend(idea.toHTML());
       }
     }, // end of render function
 
@@ -92,11 +90,6 @@ $(document).ready(function () {
       this.store();
     },
 
-    // hide: function (id) {
-    //   id3 = parseInt(id);
-    //   this.hide();
-    // }
-
   }; // end of ideaManager
 
   $saveButton.on("click", function (event) { //when they click on save
@@ -117,17 +110,17 @@ $(document).ready(function () {
     }
   });
 
-  $("#user-ideas").on("click", ".delete", function () { //when they click on delete to remove an idea
+  $userIdeas.on("click", ".delete", function () { //when they click on delete to remove an idea
     var id = $(this).closest(".each-idea-card").attr("id");
     ideaManager.find(id).remove();
   });
 
-  $("#user-ideas").on("click", ".upvote", function () {
+  $userIdeas.on("click", ".upvote", function () {
     var id = $(this).closest(".each-idea-card").attr("id");
     ideaManager.find(id).upvote();
   });
 
-  $("#user-ideas").on("click", ".downvote", function () {
+  $userIdeas.on("click", ".downvote", function () {
     var id = $(this).closest(".each-idea-card").attr("id");
     ideaManager.find(id).downvote();
   });
@@ -156,7 +149,7 @@ $(document).ready(function () {
     ideaManager.store();
   }; //end of downvote
 
-  $("#user-ideas").on("keyup keydown click", "h3", function (key) {
+  $userIdeas.on("keyup keydown click", "h3", function (key) {
     $(this).addClass("editing-input-contenteditable");
     if (key.which === 13) {
       var target = $(this).closest("h3").text();
@@ -165,7 +158,7 @@ $(document).ready(function () {
     }
   });
 
-  $("#user-ideas").on("keyup keydown click", "p", function (key) {
+  $userIdeas.on("keyup keydown click", "p", function (key) {
     $(this).addClass("editing-input-contenteditable");
     if (key.which === 13) {
       var target = $(this).closest("p").text();
@@ -184,14 +177,14 @@ $(document).ready(function () {
     ideaManager.store();
   };
 
-  $("#user-ideas").on("blur", "h3", function () {
+  $userIdeas.on("blur", "h3", function () {
     $(this).removeClass("editing-input-contenteditable");
     var target = $(this).closest("h3").text();
     var id = $(this).closest(".each-idea-card").attr("id");
     ideaManager.find(id).saveEditableTitle(target);
   });
 
-  $("#user-ideas").on("blur", "p", function () {
+  $userIdeas.on("blur", "p", function () {
     $(this).removeClass("editing-input-contenteditable");
     var target = $(this).closest("p").text();
     var id = $(this).closest(".each-idea-card").attr("id");
