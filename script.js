@@ -147,9 +147,11 @@ $(document).ready(function () {
   Idea.prototype.downvote = function () {
     if (this.quality === "genius") {
       this.quality = "plausible";
+      this.image = "images/neutral-face-.jpg";
     }
     else if (this.quality === "plausible") {
       this.quality = "swill";
+      this.image = "images/thumbs-down.jpg";
     }
     ideaManager.store();
   }; //end of downvote
