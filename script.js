@@ -1,12 +1,10 @@
+var $titleInput = $("#title-input").val();
+var $bodyInput = $("#body-input").val();
+var $saveButton = $("#save-button");
+var $searchInput = $("#search-input");
+var $userIdeas = $("#user-ideas");
+
 $(document).ready(function () {
-
-  var $titleInput = $("#title-input").val();
-  var $bodyInput = $("#body-input").val();
-  var $saveButton = $("#save-button");
-
-  var $searchInput = $("#search-input");
-
-  var $userIdeas = $("#user-ideas"); //the container for ideas, static in DOM
 
   function Idea (title, body, id, quality, image) {
     this.title = title;
@@ -92,16 +90,11 @@ $(document).ready(function () {
       this.store();
     },
 
-    // hide: function (id) {
-    //   id3 = parseInt(id);
-    //   this.hide();
-    // }
-
   }; // end of ideaManager
 
   $saveButton.on("click", function (event) { //when they click on save
-    var title = $("#title-input").val();
-    var body = $("#body-input").val();
+    var title = $titleInput;
+    var body = $bodyInput;
     ideaManager.add(title, body);
     $("#title-input").val("");
     $("#body-input").val("");
