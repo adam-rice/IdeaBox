@@ -62,3 +62,9 @@ We’d like our users to be able to easily find specific ideas they already crea
 At the top of the idea list, include a text field labeled “Search”.
 As a user types in the search box, the list of ideas should filter in real time to only display ideas whose title or body include the user’s text. The page should not reload.
 Clearing the search box should restore all the ideas to the list.
+
+Final to dos:
+
+* Finish search (remember to include body too!)
+* Make responsive
+* Refactor
