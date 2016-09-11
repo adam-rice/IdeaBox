@@ -93,8 +93,8 @@ $(document).ready(function () {
   }; // end of ideaManager
 
   $saveButton.on("click", function (event) { //when they click on save
-    var title = $titleInput;
-    var body = $bodyInput;
+    var title = $("#title-input").val();
+    var body = $("#body-input").val();
     ideaManager.add(title, body);
     $("#title-input").val("");
     $("#body-input").val("");
