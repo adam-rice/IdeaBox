@@ -8,11 +8,12 @@ $(document).ready(function () {
 
   var $userIdeas = $("#user-ideas"); //the container for ideas, static in DOM
 
-  function Idea (title, body, id, quality) {
+  function Idea (title, body, id, quality, image) {
     this.title = title;
     this.body = body;
     this.id = id || Date.now();
     this.quality = quality || "swill";
+    this.image = image || "images/thumbs-down.jpg";
   }
 
   Idea.prototype.toHTML = function () {
@@ -27,6 +28,7 @@ $(document).ready(function () {
                 <figure class='upvote'></figure>
                 <figure class='downvote'></figure>
                 <h6><span class='designation-quality'>quality</span>: ${this.quality}</h6>
+                <img src=${this.image} class='rating-img' />
             </footer><hr>
         </section>
     `);
@@ -77,7 +79,7 @@ $(document).ready(function () {
       if (retrievedIdeas) {
         for (var i = 0; i < retrievedIdeas.length; i++) {
           var idea = retrievedIdeas[i];
-          this.ideaArray.push(new Idea(idea.title, idea.body, idea.id, idea.quality));
+          this.ideaArray.push(new Idea(idea.title, idea.body, idea.id, idea.quality, idea.image));
         }
       }
     }, // end of retrieve function
@@ -133,9 +135,11 @@ $(document).ready(function () {
   Idea.prototype.upvote = function () {
     if (this.quality === "swill") {
       this.quality = "plausible";
+      this.image = "images/neutral-face-.jpg";
     }
     else if (this.quality === "plausible") {
       this.quality = "genius";
+      this.image = "images/light-bulb.jpg";
     }
       ideaManager.store();
   }; //end of upvote
@@ -143,9 +147,11 @@ $(document).ready(function () {
   Idea.prototype.downvote = function () {
     if (this.quality === "genius") {
       this.quality = "plausible";
+      this.image = "images/neutral-face-.jpg";
     }
     else if (this.quality === "plausible") {
       this.quality = "swill";
+      this.image = "images/thumbs-down.jpg";
     }
     ideaManager.store();
   }; //end of downvote
