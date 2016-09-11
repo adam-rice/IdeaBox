@@ -127,6 +127,7 @@ figure:hover {
 
 .editing-input-contenteditable {
   border: none;
+  line-height: 1.3;
   outline: normal;
   outline-color: #D1D3D4;
   white-space: pre-wrap;
