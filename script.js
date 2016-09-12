@@ -19,12 +19,12 @@ $(document).ready(function () {
         <section class='each-idea-card' id=${this.id}>
             <header>
                 <h3 contenteditable='true'>${this.title}</h3>
-                <figure class='delete'></figure>
+                <figure class='delete' id='delete'></figure>
             </header>
                 <p contenteditable='true'>${this.body}</p>
             <footer>
                 <figure class='upvote' id='upvote'></figure>
-                <figure class='downvote'></figure>
+                <figure class='downvote' id='downvote'></figure>
                 <h6><span class='designation-quality'>quality</span>: ${this.quality}</h6>
                 <img src=${this.image} class='rating-img' />
             </footer><hr>
@@ -110,24 +110,24 @@ $(document).ready(function () {
 
   $userIdeas.on("click", ".delete, .upvote, .downvote", function (event) {
     var id = $(this).closest(".each-idea-card").attr("id");
-    alert(this.id);
-    // if (event.target === ) {
-    //   alert('upvote');
-    // }
+    var find = ideaManager.find(id);
+    if (this.id === "upvote") {
+      find.upvote();
+    }
   });
 
   $userIdeas.on("click", ".delete", function () {
-    var id = $(this).closest(".each-idea-card").attr("id");
+    // var id = $(this).closest(".each-idea-card").attr("id");
     ideaManager.find(id).remove();
   });
 
   $userIdeas.on("click", ".upvote", function () {
-    var id = $(this).closest(".each-idea-card").attr("id");
-    ideaManager.find(id).upvote();
+    // var id = $(this).closest(".each-idea-card").attr("id");
+    // ideaManager.find(id).upvote();
   });
 
   $userIdeas.on("click", ".downvote", function () {
-    var id = $(this).closest(".each-idea-card").attr("id");
+    // var id = $(this).closest(".each-idea-card").attr("id");
     ideaManager.find(id).downvote();
   });
 
