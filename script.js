@@ -92,19 +92,20 @@ $(document).ready(function () {
     $bodyInput.val("");
   }
 
-  $saveButton.on("click", function () {
+  function addUserInputToIdeaManager() {
     ideaManager.add($titleInput.val(), $bodyInput.val());
+
+  }
+
+  $saveButton.on("click", function () {
+    addUserInputToIdeaManager();
     clearInputFields();
-    // $titleInput.val("");
-    // $bodyInput.val("");
   });
 
   $bodyInput.on("keyup", function (key) {
     if (key.which === 13) {
-      ideaManager.add($titleInput.val(), $bodyInput.val());
+      addUserInputToIdeaManager();
       clearInputFields();
-      // $titleInput.val("");
-      // $bodyInput.val("");
     }
   });
 
