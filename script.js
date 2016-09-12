@@ -23,7 +23,7 @@ $(document).ready(function () {
             </header>
                 <p contenteditable='true'>${this.body}</p>
             <footer>
-                <figure class='upvote'></figure>
+                <figure class='upvote' id='upvote'></figure>
                 <figure class='downvote'></figure>
                 <h6><span class='designation-quality'>quality</span>: ${this.quality}</h6>
                 <img src=${this.image} class='rating-img' />
@@ -108,8 +108,12 @@ $(document).ready(function () {
     }
   });
 
-  $userIdeas.on("click", ".delete, .upvote", function () {
-    alert('hi');
+  $userIdeas.on("click", ".delete, .upvote, .downvote", function (event) {
+    var id = $(this).closest(".each-idea-card").attr("id");
+    alert(this.id);
+    // if (event.target === ) {
+    //   alert('upvote');
+    // }
   });
 
   $userIdeas.on("click", ".delete", function () {
