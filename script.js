@@ -1,5 +1,5 @@
-var $titleInput = $("#title-input").val();
-var $bodyInput = $("#body-input").val();
+var $titleInput = $("#title-input");
+var $bodyInput = $("#body-input");
 var $saveButton = $("#save-button");
 var $searchInput = $("#search-input");
 var $userIdeas = $("#user-ideas");
@@ -47,15 +47,10 @@ $(document).ready(function () {
     },
 
     find: function (id) {
-      var id2 = parseInt(id);
-      var foundIdea;
-      for (var i = 0; i < this.ideaArray.length; i++) {
-        if (this.ideaArray[i].id === id2) {
-          foundIdea = this.ideaArray[i];
-          break;
-        }
-      }
-      return foundIdea;
+      id = parseInt(id);
+      return this.ideaArray.find(function (idea) {
+        return idea.id === id;
+      });
     }, // end of find function
 
     render: function () {
@@ -92,15 +87,13 @@ $(document).ready(function () {
 
   }; // end of ideaManager
 
-  $saveButton.on("click", function (event) { //when they click on save
-    var title = $("#title-input").val();
-    var body = $("#body-input").val();
-    ideaManager.add(title, body);
-    $("#title-input").val("");
-    $("#body-input").val("");
+  $saveButton.on("click", function () {
+    ideaManager.add($titleInput.val(), $bodyInput.val());
+    $titleInput.val("");
+    $bodyInput.val("");
   });
 
-  $("#body-input").on("keyup", function (key) { //adds new idea when they press enter key
+  $("#body-input").on("keyup", function (key) { //adds new idea when they press enter key; needs refactoring
     if (key.which === 13) {
       var title = $("#title-input").val();
       var body = $("#body-input").val();
@@ -110,7 +103,7 @@ $(document).ready(function () {
     }
   });
 
-  $userIdeas.on("click", ".delete", function () { //when they click on delete to remove an idea
+  $userIdeas.on("click", ".delete", function () {
     var id = $(this).closest(".each-idea-card").attr("id");
     ideaManager.find(id).remove();
   });
