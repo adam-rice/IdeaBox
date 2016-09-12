@@ -93,13 +93,13 @@ $(document).ready(function () {
     $bodyInput.val("");
   });
 
-  $("#body-input").on("keyup", function (key) { //adds new idea when they press enter key; needs refactoring
+  $bodyInput.on("keyup", function (key) {
     if (key.which === 13) {
-      var title = $("#title-input").val();
-      var body = $("#body-input").val();
-      ideaManager.add(title, body);
-      $("#title-input").val("");
-      $("#body-input").val("");
+      // var title = $("#title-input").val();
+      // var body = $("#body-input").val();
+      ideaManager.add($titleInput.val(), $bodyInput.val());
+      $titleInput.val("");
+      $bodyInput.val("");
     }
   });
 
