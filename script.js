@@ -123,11 +123,14 @@ $(document).ready(function () {
   }); // end of click, delete, and upvote function
 
   Idea.prototype.upvote = function () {
-    if (this.quality === "swill") {
+    // debugger;
+    var quality = this.quality;
+    var image = this.image;
+    if (quality === "swill") {
       this.quality = "plausible";
       this.image = "images/thinking.png";
     }
-    else if (this.quality === "plausible") {
+    else if (quality === "plausible") {
       this.quality = "genius";
       this.image = "images/light-bulb.jpg";
     }
