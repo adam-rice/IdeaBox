@@ -43,13 +43,13 @@ button {
   border-style: none;
   color: #FFFFFF;
   height: 32px;
-  transition-duration: 0.4s;
   width: 452px;
 }
 
 button:hover {
   background-color: #045E55;
   cursor: pointer;
+  transition-duration: 0.4s;
 }
 
 #output-container {
@@ -107,12 +107,12 @@ h6 {
 figure {
   height: 20px;
   padding: 2px;
-  transition-duration: .4s;
   width: 20px;
 }
 
 figure:hover {
   cursor: pointer;
+  transition-duration: 0.4s;
 }
 
 .upvote {
