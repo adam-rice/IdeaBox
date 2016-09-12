@@ -114,22 +114,13 @@ $(document).ready(function () {
     if (this.id === "upvote") {
       find.upvote();
     }
-  });
-
-  $userIdeas.on("click", ".delete", function () {
-    // var id = $(this).closest(".each-idea-card").attr("id");
-    ideaManager.find(id).remove();
-  });
-
-  $userIdeas.on("click", ".upvote", function () {
-    // var id = $(this).closest(".each-idea-card").attr("id");
-    // ideaManager.find(id).upvote();
-  });
-
-  $userIdeas.on("click", ".downvote", function () {
-    // var id = $(this).closest(".each-idea-card").attr("id");
-    ideaManager.find(id).downvote();
-  });
+    else if (this.id === "downvote") {
+      find.downvote();
+    }
+    else if (this.id === "delete") {
+      find.remove();
+    }
+  }); // end of click, delete, and upvote function
 
   Idea.prototype.upvote = function () {
     if (this.quality === "swill") {
