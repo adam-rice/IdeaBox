@@ -94,7 +94,6 @@ $(document).ready(function () {
 
   function addUserInputToIdeaManager() {
     ideaManager.add($titleInput.val(), $bodyInput.val());
-
   }
 
   $saveButton.on("click", function () {
@@ -107,6 +106,10 @@ $(document).ready(function () {
       addUserInputToIdeaManager();
       clearInputFields();
     }
+  });
+
+  $userIdeas.on("click", ".delete, .upvote", function () {
+    alert('hi');
   });
 
   $userIdeas.on("click", ".delete", function () {
