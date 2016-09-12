@@ -87,19 +87,24 @@ $(document).ready(function () {
 
   }; // end of ideaManager
 
-  $saveButton.on("click", function () {
-    ideaManager.add($titleInput.val(), $bodyInput.val());
+  function clearInputFields() {
     $titleInput.val("");
     $bodyInput.val("");
+  }
+
+  $saveButton.on("click", function () {
+    ideaManager.add($titleInput.val(), $bodyInput.val());
+    clearInputFields();
+    // $titleInput.val("");
+    // $bodyInput.val("");
   });
 
   $bodyInput.on("keyup", function (key) {
     if (key.which === 13) {
-      // var title = $("#title-input").val();
-      // var body = $("#body-input").val();
       ideaManager.add($titleInput.val(), $bodyInput.val());
-      $titleInput.val("");
-      $bodyInput.val("");
+      clearInputFields();
+      // $titleInput.val("");
+      // $bodyInput.val("");
     }
   });
 
