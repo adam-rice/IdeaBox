@@ -19,12 +19,12 @@ $(document).ready(function () {
         <section class='each-idea-card' id=${this.id}>
             <header>
                 <h3 contenteditable='true'>${this.title}</h3>
-                <figure class='delete'></figure>
+                <figure class='delete' id='delete'></figure>
             </header>
                 <p contenteditable='true'>${this.body}</p>
             <footer>
-                <figure class='upvote'></figure>
-                <figure class='downvote'></figure>
+                <figure class='upvote' id='upvote'></figure>
+                <figure class='downvote' id='downvote'></figure>
                 <h6><span class='designation-quality'>quality</span>: ${this.quality}</h6>
                 <img src=${this.image} class='rating-img' />
             </footer><hr>
@@ -87,43 +87,48 @@ $(document).ready(function () {
 
   }; // end of ideaManager
 
-  $saveButton.on("click", function () {
-    ideaManager.add($titleInput.val(), $bodyInput.val());
+  function clearInputFields() {
     $titleInput.val("");
     $bodyInput.val("");
+  }
+
+  function addUserInputToIdeaManager() {
+    ideaManager.add($titleInput.val(), $bodyInput.val());
+  }
+
+  $saveButton.on("click", function () {
+    addUserInputToIdeaManager();
+    clearInputFields();
   });
 
-  $("#body-input").on("keyup", function (key) { //adds new idea when they press enter key; needs refactoring
+  $bodyInput.on("keyup", function (key) {
     if (key.which === 13) {
-      var title = $("#title-input").val();
-      var body = $("#body-input").val();
-      ideaManager.add(title, body);
-      $("#title-input").val("");
-      $("#body-input").val("");
+      addUserInputToIdeaManager();
+      clearInputFields();
     }
   });
 
-  $userIdeas.on("click", ".delete", function () {
+  $userIdeas.on("click", ".delete, .upvote, .downvote", function (event) {
     var id = $(this).closest(".each-idea-card").attr("id");
-    ideaManager.find(id).remove();
-  });
-
-  $userIdeas.on("click", ".upvote", function () {
-    var id = $(this).closest(".each-idea-card").attr("id");
-    ideaManager.find(id).upvote();
-  });
-
-  $userIdeas.on("click", ".downvote", function () {
-    var id = $(this).closest(".each-idea-card").attr("id");
-    ideaManager.find(id).downvote();
-  });
+    var find = ideaManager.find(id);
+    if (this.id === "upvote") {
+      find.upvote();
+    }
+    else if (this.id === "downvote") {
+      find.downvote();
+    }
+    else if (this.id === "delete") {
+      find.remove();
+    }
+  }); // end of click, delete, and upvote function
 
   Idea.prototype.upvote = function () {
-    if (this.quality === "swill") {
+    var quality = this.quality;
+    if (quality === "swill") {
       this.quality = "plausible";
       this.image = "images/thinking.png";
     }
-    else if (this.quality === "plausible") {
+    else if (quality === "plausible") {
       this.quality = "genius";
       this.image = "images/light-bulb.jpg";
     }
@@ -131,34 +136,45 @@ $(document).ready(function () {
   }; //end of upvote
 
   Idea.prototype.downvote = function () {
-    if (this.quality === "genius") {
+    var quality = this.quality;
+    if (quality === "genius") {
       this.quality = "plausible";
       this.image = "images/thinking.png";
     }
-    else if (this.quality === "plausible") {
+    else if (quality === "plausible") {
       this.quality = "swill";
       this.image = "images/pig.png";
     }
     ideaManager.store();
   }; //end of downvote
 
-  $userIdeas.on("keyup keydown click", "h3", function (key) {
+  $userIdeas.on("keyup keydown click", "h3, p", function (key) {
+    var id = $(this).closest(".each-idea-card").attr("id");
     $(this).addClass("editing-input-contenteditable");
     if (key.which === 13) {
-      var target = $(this).closest("h3").text();
-      var id = $(this).closest(".each-idea-card").attr("id");
-      ideaManager.find(id).saveEditableTitle(target);
-    }
-  });
+      if (event.target.nodeName === "H3") {
+        var targetH3 = $(this).closest("h3").text();
+        ideaManager.find(id).saveEditableTitle(targetH3);
+      }
+      else if (event.target.nodeName === "P") {
+        var targetP = $(this).closest("p").text();
+        ideaManager.find(id).saveEditableBody(targetP);
+      }
+    } // end of big "enter" if statement
+  }); //end of keyup keydown click function
 
-  $userIdeas.on("keyup keydown click", "p", function (key) {
-    $(this).addClass("editing-input-contenteditable");
-    if (key.which === 13) {
-      var target = $(this).closest("p").text();
-      var id = $(this).closest(".each-idea-card").attr("id");
-      ideaManager.find(id).saveEditableBody(target);
+  $userIdeas.on("blur", "h3, p", function () {
+    var id = $(this).closest(".each-idea-card").attr("id");
+    $(this).removeClass("editing-input-contenteditable");
+    if (event.target.nodeName === "H3") {
+      var targetH3 = $(this).closest("h3").text();
+      ideaManager.find(id).saveEditableTitle(targetH3);
     }
-  });
+    else if (event.target.nodeName === "P") {
+      var targetP = $(this).closest("p").text();
+      ideaManager.find(id).saveEditableBody(targetP);
+    }
+  }); //end of blur function
 
   Idea.prototype.saveEditableTitle = function (target) {
     this.title = target;
@@ -169,20 +185,6 @@ $(document).ready(function () {
     this.body = target;
     ideaManager.store();
   };
-
-  $userIdeas.on("blur", "h3", function () {
-    $(this).removeClass("editing-input-contenteditable");
-    var target = $(this).closest("h3").text();
-    var id = $(this).closest(".each-idea-card").attr("id");
-    ideaManager.find(id).saveEditableTitle(target);
-  });
-
-  $userIdeas.on("blur", "p", function () {
-    $(this).removeClass("editing-input-contenteditable");
-    var target = $(this).closest("p").text();
-    var id = $(this).closest(".each-idea-card").attr("id");
-    ideaManager.find(id).saveEditableBody(target);
-  });
 
   $searchInput.on("keyup", function () {
     var search = $(this).val().trim();
