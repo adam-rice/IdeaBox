@@ -149,18 +149,32 @@ $(document).ready(function () {
   }; //end of downvote
 
   $userIdeas.on("keyup keydown click", "h3, p", function (key) {
-    var target = $(this).closest("h3").text();
     var id = $(this).closest(".each-idea-card").attr("id");
     $(this).addClass("editing-input-contenteditable");
     if (key.which === 13) {
       if (event.target.nodeName === "H3") {
-        ideaManager.find(id).saveEditableTitle(target);
+        var targetH3 = $(this).closest("h3").text();
+        ideaManager.find(id).saveEditableTitle(targetH3);
       }
       else if (event.target.nodeName === "P") {
-        ideaManager.find(id).saveEditableBody(target);
+        var targetP = $(this).closest("p").text();
+        ideaManager.find(id).saveEditableBody(targetP);
       }
     } // end of big "enter" if statement
   }); //end of keyup keydown click function
+
+  $userIdeas.on("blur", "h3, p", function () {
+    var id = $(this).closest(".each-idea-card").attr("id");
+    $(this).removeClass("editing-input-contenteditable");
+    if (event.target.nodeName === "H3") {
+      var targetH3 = $(this).closest("h3").text();
+      ideaManager.find(id).saveEditableTitle(targetH3);
+    }
+    else if (event.target.nodeName === "P") {
+      var targetP = $(this).closest("p").text();
+      ideaManager.find(id).saveEditableBody(targetP);
+    }
+  }); //end of blur function
 
   Idea.prototype.saveEditableTitle = function (target) {
     this.title = target;
@@ -172,22 +186,12 @@ $(document).ready(function () {
     ideaManager.store();
   };
 
-  $userIdeas.on("blur", "h3, p", function () {
-    var target = $(this).closest("h3").text();
-    var id = $(this).closest(".each-idea-card").attr("id");
-    $(this).removeClass("editing-input-contenteditable");
-    if (event.target.nodeName === "H3") {
-      ideaManager.find(id).saveEditableTitle(target);
-    }
-
-  });
-
-  $userIdeas.on("blur", "p", function () {
-    $(this).removeClass("editing-input-contenteditable");
-    var target = $(this).closest("p").text();
-    var id = $(this).closest(".each-idea-card").attr("id");
-    ideaManager.find(id).saveEditableBody(target);
-  });
+  // $userIdeas.on("blur", "p", function () {
+  //   $(this).removeClass("editing-input-contenteditable");
+  //   var target = $(this).closest("p").text();
+  //   var id = $(this).closest(".each-idea-card").attr("id");
+  //   ideaManager.find(id).saveEditableBody(target);
+  // });
 
   $searchInput.on("keyup", function () {
     var search = $(this).val().trim();
