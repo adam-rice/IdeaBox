@@ -172,11 +172,14 @@ $(document).ready(function () {
     ideaManager.store();
   };
 
-  $userIdeas.on("blur", "h3", function () {
-    $(this).removeClass("editing-input-contenteditable");
+  $userIdeas.on("blur", "h3, p", function () {
     var target = $(this).closest("h3").text();
     var id = $(this).closest(".each-idea-card").attr("id");
-    ideaManager.find(id).saveEditableTitle(target);
+    $(this).removeClass("editing-input-contenteditable");
+    if (event.target.nodeName === "H3") {
+      ideaManager.find(id).saveEditableTitle(target);
+    }
+
   });
 
   $userIdeas.on("blur", "p", function () {
