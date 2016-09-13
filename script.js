@@ -149,13 +149,16 @@ $(document).ready(function () {
   }; //end of downvote
 
   $userIdeas.on("keyup keydown click", "h3", function (key) {
+    var target = $(this).closest("h3").text();
+    var find = ideaManager.find(id);
+    var id = $(this).closest(".each-idea-card").attr("id");
     $(this).addClass("editing-input-contenteditable");
     if (key.which === 13) {
-      var target = $(this).closest("h3").text();
-      var id = $(this).closest(".each-idea-card").attr("id");
-      ideaManager.find(id).saveEditableTitle(target);
-    }
-  });
+      if (event.target.nodeName === "H3") {
+        ideaManager.find(id).saveEditableTitle(target);
+      }
+    } // end of "enter" if statement
+  }); //end of keyup keydown click function
 
   $userIdeas.on("keyup keydown click", "p", function (key) {
     $(this).addClass("editing-input-contenteditable");
