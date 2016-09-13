@@ -186,13 +186,6 @@ $(document).ready(function () {
     ideaManager.store();
   };
 
-  // $userIdeas.on("blur", "p", function () {
-  //   $(this).removeClass("editing-input-contenteditable");
-  //   var target = $(this).closest("p").text();
-  //   var id = $(this).closest(".each-idea-card").attr("id");
-  //   ideaManager.find(id).saveEditableBody(target);
-  // });
-
   $searchInput.on("keyup", function () {
     var search = $(this).val().trim();
     $("h3:contains('" + search + "')").closest(".each-idea-card").show();
